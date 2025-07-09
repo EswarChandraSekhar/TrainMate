@@ -1,0 +1,64 @@
+<div class="container py-5">
+  <h2 class="text-center fw-bold mb-4" style="color: #1A2B49;">
+    🧾 Submitted Lost Item Reports
+  </h2>
+
+
+
+  <!-- Lost Reports Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle shadow-sm">
+      <thead style="background-color: #1A2B49;" class="text-white text-center">
+        <tr>
+          <th>#</th>
+          <th>User Full Name</th>
+          <th>Mobile</th>
+          <th>email</th>
+          <th>Train No. & Name</th>
+          <th>Coach / Seat</th>
+          <th>Item Name</th>
+          <th>Date Lost</th>
+          <th>Description</th>
+          <th>Proof</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="LostListLoader === false" class="text-center" >
+        <tr *ngFor="let lost of lostReports; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ lost.fullnameofuser }}</td>
+          <td>{{ lost.mobile }}</td>
+          <td>{{ lost.email }}</td>
+          <td>{{ lost.trainNumber }} – {{ lost.trainName }}</td>
+          <td>{{ lost.coachnum || '-' }} / {{ lost.seatnum || '-' }}</td>
+          <td>{{ lost.itemname }}</td>
+          <td>{{ lost.dateoflost | date:'mediumDate' }}</td>
+          <td class="text-start">
+            <span  class="text-muted small">{{ lost.description }}</span>
+          </td>
+          <td class="text-start">
+            <span class="text-muted small">{{ lost.proof }}</span>
+          </td>
+          <td class="text-center">
+          <div class="d-flex justify-content-center align-items-center gap-2">
+              <!-- Edit Button -->
+              <button class="btn btn-sm btn-outline-primary" (click)="onEdit(lost)" title="Edit">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <!-- Delete Button -->
+              <button class="btn btn-sm btn-outline-danger" (click)="onDelete(lost)" title="Delete">
+                <i class="bi bi-trash"></i>
+              </button>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="LostListLoader === true">
+         <tr >
+           <td colspan="7" class="text-center"><app-loader></app-loader></td>
+         </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

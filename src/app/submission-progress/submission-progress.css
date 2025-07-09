@@ -1,0 +1,17 @@
+.fullscreen-wrapper {
+  height: 100vh;
+  background-color: #fef9e7;
+}
+
+.status-box {
+  max-width: 600px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.message {
+  font-size: 1.2rem;
+  color: #444;
+}

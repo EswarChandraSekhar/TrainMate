@@ -1,0 +1,112 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow border-0">
+        
+        <!-- Enhanced Header -->
+        <div class="card-header text-white text-center py-4" style="background-color: #1A2B49;">
+          <h4 class="mb-2 fw-bold text-uppercase">
+            <i class="bi bi-backpack-fill me-2"></i> Found Item Report Form
+          </h4>
+          <small class="text-warning ">
+            Help reunite someone's belongings. Your honesty brings relief to fellow passengers.
+          </small>
+        </div>
+
+        <!-- Form Body -->
+        <div class="card-body px-4 py-5" style="background-color: #f7f9fc;">
+          <form>
+
+            <!-- Finder Name -->
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="finderName" placeholder="Your Name" required>
+              <label for="finderName">Your Name</label>
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="form-floating mb-3">
+              <input type="tel" class="form-control" id="finderMobile" placeholder="Mobile Number" maxlength="10" required>
+              <label for="finderMobile">Mobile Number</label>
+            </div>
+
+            <!-- Email -->
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="finderEmail" placeholder="Email Address" required>
+              <label for="finderEmail">Email Address</label>
+            </div>
+
+            <!-- Train Details -->
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="trainNumber" placeholder="Train Number" required>
+                  <label for="trainNumber">Train Number</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="trainName" placeholder="Train Name" required>
+                  <label for="trainName">Train Name</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coach & Approximate Location -->
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="coach" placeholder="Coach (if known)">
+                  <label for="coach">Coach (if known)</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="locationFound" placeholder="Where was it found?" required>
+                  <label for="locationFound">Location Found (e.g., berth, restroom, etc.)</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Found Item Name -->
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="foundItemName" placeholder="Item Name" required>
+              <label for="foundItemName">Item Name</label>
+            </div>
+
+            <!-- Description -->
+            <div class="form-floating mb-3">
+              <textarea class="form-control" id="foundDescription" style="height: 100px;" placeholder="Item Description"></textarea>
+              <label for="foundDescription">Brief Description of the Item</label>
+            </div>
+
+            <!-- Date Found -->
+            <div class="form-floating mb-3">
+              <input type="date" class="form-control" id="foundDate" required>
+              <label for="foundDate">Date You Found the Item</label>
+            </div>
+
+            <!-- Upload Image -->
+            <div class="mb-4">
+              <label for="foundUpload" class="form-label fw-semibold">📎 Upload Image (Optional)</label>
+              <input class="form-control" type="file" id="foundUpload" accept="image/*">
+              <small class="form-text text-muted">Attach a photo of the found item if possible.</small>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid mt-4">
+              <button class="btn btn-lg text-white" style="background-color: #1A2B49;" type="submit">
+                ✅ Submit Found Report
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+      <a routerLink="/home" class="btn btn-outline-primary" style="border-color: #1A2B49; color: #1A2B49;">
+        ⬅️ Home
+      </a>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+.fullscreen-wrapper {
+  height: 100vh;
+  background-color: #f2f6ff;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 400px;
+}

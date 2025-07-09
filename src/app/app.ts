@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'trainmate-app';
+  constructor(private Router: Router){}
+
+  ngOnInit(): void {}
+
+  activeTab: string = 'home';
+  
+  handleclick(path:any){
+      this.Router.navigate(['/'+ path])
+      this.activeTab = path;
+    }
 }

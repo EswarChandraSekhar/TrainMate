@@ -1,0 +1,13 @@
+.active{
+    border-bottom: 3px solid whitesmoke;
+    font-weight: bold;
+}
+
+.navbar-bordered {
+  border: 1px solid white;
+}
+
+.logo-img {
+  background: transparent;
+  border-radius: 50%; /* or 12px for soft edges */
+}

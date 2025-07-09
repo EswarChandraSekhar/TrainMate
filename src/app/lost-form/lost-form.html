@@ -1,0 +1,131 @@
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow border-0">
+                <div class="card-header text-white text-center py-4" style="background-color: #1A2B49;">
+                    <h4 class="mb-2 fw-bold text-uppercase">
+                        <i class="bi bi-exclamation-circle-fill me-2"></i> Lost Item Report Form
+                    </h4>
+                    <small class="text-warning">
+                        Please fill carefully. Your details help us verify and reunite items
+                        responsibly.
+                    </small>
+                </div>
+
+
+                <div class="card-body px-4 py-5" style="background-color: #f7f9fc;">
+                    <form>
+
+                        <!-- Full Name -->
+                        <div class="form-floating mb-3">
+                            <input type="text" [(ngModel)]="fullname" name="fullname" class="form-control" id="fullName"
+                                placeholder="Full Name" required>
+                            <label for="fullName">Your Full Name</label>
+                        </div>
+
+                        <!-- Contact Number -->
+                        <div class="form-floating mb-3">
+                            <input type="tel" [(ngModel)]="mobile" name="mobile" class="form-control" id="mobile"
+                                placeholder="Mobile Number" maxlength="10" required>
+                            <label for="mobile">Mobile Number</label>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-floating mb-3">
+                            <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email"
+                                placeholder="Email Address" required>
+                            <label for="email">Email Address</label>
+                        </div>
+
+                        <!-- Train Info -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" [(ngModel)]="trainNumber" name="trainNumber" class="form-control"
+                                        id="trainNumber" placeholder="Train Number" required>
+                                    <label for="trainNumber">Train Number</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" [(ngModel)]="trainName" name="trainName" class="form-control"
+                                        id="trainName" placeholder="Train Name" required>
+                                    <label for="trainName">Train Name</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coach / Seat -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" [(ngModel)]="coachnum" name="coachnum" class="form-control"
+                                        id="coach" placeholder="Coach Number">
+                                    <label for="coach">Coach Number</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" [(ngModel)]="seatnum" name="seatnum" class="form-control"
+                                        id="seat" placeholder="Seat Number">
+                                    <label for="seat">Seat Number</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item Name -->
+                        <div class="form-floating mb-3">
+                            <input type="text" [(ngModel)]="itemname" name="itemname" class="form-control" id="itemName"
+                                placeholder="Item Name" required>
+                            <label for="itemName">Lost Item Name</label>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" [(ngModel)]="description" name="description" id="description"
+                                style="height: 100px;" placeholder="Item Description"></textarea>
+                            <label for="description">Brief Description of the Item</label>
+                        </div>
+
+                        <!-- Date of Loss -->
+                        <div class="form-floating mb-3">
+                            <input type="date" [(ngModel)]="dateoflost" name="dateoflost" class="form-control"
+                                id="lostDate" required>
+                            <label for="lostDate">Date You Lost the Item</label>
+                        </div>
+
+                        <!-- Proof of Ownership -->
+                        <div class="form-floating mb-3">
+                            <textarea [(ngModel)]="proof" name="proof" class="form-control" id="proof"
+                                style="height: 100px;" placeholder="Proof of Ownership"></textarea>
+                            <label for="proof">Any Proof (Receipt, ID tag, etc.)</label>
+                        </div>
+
+                        <!-- File Upload -->
+                        <!--<div class="mb-4">
+                            <label for="uploadImage" class="form-label fw-semibold">📎 Upload Image (Optional)</label>
+                            <input class="form-control" type="file" id="uploadImage" accept="image/*">
+                            <small class="form-text text-muted">Upload a photo of the item, receipt, or any related
+                                document.</small>
+                        </div>-->
+
+                        <!-- Submit -->
+                        <div class="d-grid mt-4">
+                            <button class="btn btn-lg text-white" (click)="handleSubmit()"
+                                style="background-color: #165BAA;">
+                                Submit
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <a routerLink="/home" class="btn btn-outline-primary" style="border-color: #1A2B49; color: #1A2B49;">
+            ⬅️ Home
+        </a>
+    </div>
+</div>
