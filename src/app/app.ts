@@ -4,18 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  standalone: false,
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  standalone: false
 })
 export class App {
-  constructor(private Router: Router){}
+  activeTab: string = 'home';
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
-  activeTab: string = 'home';
-  
-  handleclick(path:any){
-      this.Router.navigate(['/'+ path])
-      this.activeTab = path;
-    }
+  handleclick(path: string): void {
+    this.router.navigate(['/' + path]);
+    this.activeTab = path;
+  }
 }

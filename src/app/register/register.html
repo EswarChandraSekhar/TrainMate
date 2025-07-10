@@ -1,0 +1,40 @@
+<div class="register-wrapper d-flex justify-content-center align-items-center">
+  <div class="register-box position-relative shadow-lg rounded-4 p-4">
+    <h2 class="text-center mb-3 text-white fw-bold">Create Account</h2>
+    <p class="text-center text-light">Join TrainMate and track your lost or found items with ease!</p>
+
+    <form>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control text-white bg-transparent border-light" id="name" placeholder="Full Name" required>
+        <label for="name" class="text-white">Full Name</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control text-white bg-transparent border-light" id="email" placeholder="name@example.com" required>
+        <label for="email" class="text-white">Email Address</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="tel" class="form-control text-white bg-transparent border-light" id="mobile" placeholder="9876543210" required>
+        <label for="mobile" class="text-white">Mobile Number</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control text-white bg-transparent border-light" id="password" placeholder="Password" required>
+        <label for="password" class="text-white">Password</label>
+      </div>
+
+      <div class="form-floating mb-4">
+        <input type="password" class="form-control text-white bg-transparent border-light" id="confirmPassword" placeholder="Confirm Password" required>
+        <label for="confirmPassword" class="text-white">Confirm Password</label>
+      </div>
+
+      <button type="submit" class="btn btn-warning w-100 fw-semibold shadow">Register</button>
+    </form>
+
+    <p class="text-center mt-4 text-light">
+      Already have an account?
+      <a routerLink="/login" class="text-decoration-none text-warning fw-semibold">Login here</a>
+    </p>
+  </div>
+</div>

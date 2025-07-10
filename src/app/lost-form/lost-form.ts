@@ -72,7 +72,7 @@ export class LostForm implements OnInit {
       return;
     }
 
-    let lost = {
+    let lost:any = {
       fullnameofuser: this.fullname,
       mobile: this.mobile,
       email: this.email,
@@ -83,16 +83,22 @@ export class LostForm implements OnInit {
       itemname: this.itemname,
       dateoflost: this.dateoflost,
       description: this.description,
-      proof: this.proof,
-      _id: this.LostData._id
+      proof: this.proof
     };
+
+    if (this.LostData && this.LostData._id) {
+     lost._id = this.LostData._id;
+    }
+
 
     if(this.LostData === null){
       this.lostservice.addLostItem(lost).subscribe(
         (response)=>{
+           console.log('Successfully added:', response);
           this.router.navigate(['/lost-list'])
         },
         (error)=>{
+          console.error('Add failed:', error);
 
         }
       )   

@@ -18,7 +18,6 @@ export class LostList implements OnInit {
   selectedlostitem: any = null;
   LostListLoader: boolean = true;
 
-
   constructor(private lostservice: LostService, private snackBar: MatSnackBar, private matDialog: MatDialog) {}
 
   ngOnInit(): void {

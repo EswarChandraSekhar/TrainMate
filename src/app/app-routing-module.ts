@@ -9,6 +9,8 @@ import { LostList } from './lost-list/lost-list';
 import { SubmissionProgress } from './submission-progress/submission-progress';
 import { FoundFormSubmission } from './found-form-submission/found-form-submission';
 import { Login } from './login/login';
+import { Register } from './register/register';
+import { FoundList } from './found-list/found-list';
 
 const routes: Routes = [
   {
@@ -36,6 +38,10 @@ const routes: Routes = [
     component: LostList
   },
   {
+    path: 'found-list',
+    component: FoundList
+  },
+  {
     path: 'submission-progress',
     component: SubmissionProgress
   },
@@ -46,6 +52,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: Login
+  },
+  {
+    path: 'register',
+    component: Register
   },
   {
     path: '',

@@ -16,6 +16,10 @@ import { FoundFormSubmission } from './found-form-submission/found-form-submissi
 import { Login } from './login/login';
 import { Loader } from './loader/loader';
 import { EditLostDialog } from './edit-lost-dialog/edit-lost-dialog';
+import { Register } from './register/register';
+import { FoundList } from './found-list/found-list';
+import { EditFoundDialog } from './edit-found-dialog/edit-found-dialog';
+import { FoundPipePipe } from './found-pipe-pipe';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { EditLostDialog } from './edit-lost-dialog/edit-lost-dialog';
     FoundFormSubmission,
     Login,
     Loader,
-    EditLostDialog
+    EditLostDialog,
+    Register,
+    FoundList,
+    EditFoundDialog,
+    FoundPipePipe
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,83 @@
+<div class="container py-5">
+  <h2 class="text-center fw-bold mb-4" style="color: #1A2B49;">
+    🧳 Submitted Found Item Reports
+  </h2>
+  <!-- Filter & Search Bar -->
+<div class="row g-3 mb-4 align-items-end">
+  
+  <!-- Search Bar -->
+  <div class="col-md-4">
+    <input [(ngModel)]="searchInput" type="text" class="form-control" placeholder="🔍 Search by item name">
+  </div>
+
+  <!-- Train Number Filter -->
+  <div class="col-md-2">
+    <input [(ngModel)]="trainNumberFilter" type="text" class="form-control" placeholder="Train Number">
+  </div>
+
+  <!-- Train Name Filter -->
+  <div class="col-md-3">
+    <input  [(ngModel)]="trainNameFilter"  type="text" class="form-control" placeholder="Train Name">
+  </div>
+
+  <!-- Date Found Filter -->
+  <div class="col-md-3">
+    <input [(ngModel)]="dateFilter" type="date" class="form-control">
+  </div>
+
+</div>
+
+
+  <!-- Found Reports Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle shadow-sm">
+      <thead style="background-color: #1A2B49;" class="text-white text-center">
+        <tr>
+          <th>#</th>
+          <th>Finder's Name</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Train No. & Name</th>
+          <th>Coach / Location</th>
+          <th>Item Name</th>
+          <th>Date Found</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="foundListLoader === false" class="text-center">
+        <tr *ngFor="let found of foundReports 
+            | foundReportsFilter : searchInput : trainNumberFilter : trainNameFilter : dateFilter; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ found.fullname }}</td>
+          <td>{{ found.mobile }}</td>
+          <td>{{ found.email }}</td>
+          <td>{{ found.trainNumber }} – {{ found.trainName }}</td>
+          <td>{{ found.coachnum || '-' }} / {{ found.location || '-' }}</td>
+          <td>{{ found.itemname }}</td>
+          <td>{{ found.dateoffound | date:'mediumDate' }}</td>
+          <td class="text-start">
+            <span class="text-muted small">{{ found.description }}</span>
+          </td>
+          <td class="text-center">
+            <div class="d-flex justify-content-center align-items-center gap-2">
+              <!-- Edit Button -->
+              <button class="btn btn-sm btn-outline-primary" (click)="onEdit(found)" title="Edit">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <!-- Delete Button -->
+              <button class="btn btn-sm btn-outline-danger" (click)="onDelete(found)" title="Delete">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="foundListLoader === true">
+        <tr>
+          <td colspan="10" class="text-center"><app-loader></app-loader></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
