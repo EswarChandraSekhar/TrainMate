@@ -14,7 +14,7 @@ export class EditFoundDialog {
 
   }
   
-  handleClose(status: string = 'closed') {
+  handleClose(status: string = 'updated') {
   this.dialogRef.close(status);
 }
 

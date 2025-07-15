@@ -5,16 +5,16 @@
 
     <form>
       <div class="form-floating mb-3">
-        <input type="email" class="form-control text-white bg-transparent border-light" id="email" placeholder="name@example.com" required>
+        <input type="email" [(ngModel)]="email" name="email" class="form-control text-white bg-transparent border-light" id="email" placeholder="name@example.com" required>
         <label for="email" class="text-white">Email address</label>
       </div>
 
       <div class="form-floating mb-4">
-        <input type="password" class="form-control text-white bg-transparent border-light" id="password" placeholder="Password" required>
+        <input type="password" [(ngModel)]="password" name="password" class="form-control text-white bg-transparent border-light" id="password" placeholder="Password" required>
         <label for="password" class="text-white">Password</label>
       </div>
 
-      <button type="submit" class="btn btn-warning w-100 fw-semibold shadow-sm">Login</button>
+      <button type="button" (click)="handleLogin()" class="btn btn-warning w-100 fw-semibold shadow-sm">Login</button>
     </form>
 
     <p class="mt-4 text-light mb-0">

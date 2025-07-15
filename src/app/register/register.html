@@ -5,31 +5,30 @@
 
     <form>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control text-white bg-transparent border-light" id="name" placeholder="Full Name" required>
-        <label for="name" class="text-white">Full Name</label>
+        <input [(ngModel)]="firstName" name="firstname" type="text" class="form-control text-white bg-transparent border-light" id="firstname" placeholder="First Name" required>
+        <label for="firstname" class="text-white">First Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input [(ngModel)]="lastName" name="lastname" type="text" class="form-control text-white bg-transparent border-light" id="lastname" placeholder="Last Name" required>
+        <label for="lastname" class="text-white">Last Name</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="email" class="form-control text-white bg-transparent border-light" id="email" placeholder="name@example.com" required>
+        <input [(ngModel)]="email" name="email" type="email" class="form-control text-white bg-transparent border-light" id="email" placeholder="name@example.com" required>
         <label for="email" class="text-white">Email Address</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="tel" class="form-control text-white bg-transparent border-light" id="mobile" placeholder="9876543210" required>
+        <input [(ngModel)]="phoneNumber" name="phonenumber" type="tel" class="form-control text-white bg-transparent border-light" id="mobile" placeholder="9876543210" required>
         <label for="mobile" class="text-white">Mobile Number</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="password" class="form-control text-white bg-transparent border-light" id="password" placeholder="Password" required>
+        <input [(ngModel)]="password" name="password" type="password" class="form-control text-white bg-transparent border-light" id="password" placeholder="Password" required>
         <label for="password" class="text-white">Password</label>
       </div>
 
-      <div class="form-floating mb-4">
-        <input type="password" class="form-control text-white bg-transparent border-light" id="confirmPassword" placeholder="Confirm Password" required>
-        <label for="confirmPassword" class="text-white">Confirm Password</label>
-      </div>
-
-      <button type="submit" class="btn btn-warning w-100 fw-semibold shadow">Register</button>
+      <button type="submit" (click)="handleSubmit()" class="btn btn-warning w-100 fw-semibold shadow">Register</button>
     </form>
 
     <p class="text-center mt-4 text-light">

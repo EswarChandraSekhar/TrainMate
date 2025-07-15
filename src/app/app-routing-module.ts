@@ -11,6 +11,7 @@ import { FoundFormSubmission } from './found-form-submission/found-form-submissi
 import { Login } from './login/login';
 import { Register } from './register/register';
 import { FoundList } from './found-list/found-list';
+import { AuthGuard } from './auth-guard';
 
 const routes: Routes = [
   {
@@ -35,11 +36,13 @@ const routes: Routes = [
   },
   {
     path: 'lost-list',
-    component: LostList
+    component: LostList, 
+    canActivate: [AuthGuard]
   },
   {
     path: 'found-list',
-    component: FoundList
+    component: FoundList,
+    canActivate: [AuthGuard]
   },
   {
     path: 'submission-progress',

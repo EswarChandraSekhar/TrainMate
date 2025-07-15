@@ -32,10 +32,10 @@
         <li class="nav-item">
           <a class="nav-link text-white fw-medium"(click)="handleclick('found-form')" [ngClass]="{'active': activeTab === 'found-form'}" >Found-Item</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="loginStatus === true" class="nav-item">
           <a class="nav-link text-white fw-medium"(click)="handleclick('lost-list')" [ngClass]="{'active': activeTab === 'lost-list'}" >Lost-List</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="loginStatus === true" class="nav-item">
           <a class="nav-link text-white fw-medium"(click)="handleclick('found-list')" [ngClass]="{'active': activeTab === 'found-list'}" >Found-List</a>
         </li>
         <li class="nav-item">
@@ -44,11 +44,11 @@
         <li class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('reactions')" [ngClass]="{'active': activeTab === 'reactions'}" >Reactions</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="loginStatus === false"  class="nav-item">
           <a class="btn btn-outline-light btn-sm px-3" (click)="handleclick('login')" [ngClass]="{'active': activeTab === 'login'}">Login</a>
         </li>
-         <li class="nav-item">
-          <a class="btn btn-outline-light btn-sm px-3" (click)="handleclick('register')" [ngClass]="{'active': activeTab === 'register'}">Register</a>
+         <li *ngIf="loginStatus=== true" class="nav-item">
+          <a class="btn btn-outline-light btn-sm px-3" (click)="handleLogout()" >Logout</a>
         </li>
       </ul>
     </div>
