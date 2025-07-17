@@ -14,6 +14,8 @@ import { FoundList } from './found-list/found-list';
 import { AuthGuard } from './auth-guard';
 import { AdminPanel } from './admin-panel/admin-panel';
 import { UserPanel } from './user-panel/user-panel';
+import { UnauthorizedComponent } from './unauthorized-component/unauthorized-component';
+import { AdminAuthGuard } from './admin-auth-guard';
 const routes: Routes = [
   {
     path: 'home',
@@ -21,19 +23,23 @@ const routes: Routes = [
   },
   {
     path: 'lost-form',
-    component: LostForm
+    component: LostForm,
+    canActivate: [AuthGuard]
   },
   {
     path: 'found-form',
-    component: FoundForm
+    component: FoundForm,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin-panel',
-    component: AdminPanel
+    component: AdminPanel,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'user-panel',
-    component: UserPanel
+    component: UserPanel,
+    canActivate: [AuthGuard]
   },
   {
     path: 'about-us',
@@ -46,12 +52,12 @@ const routes: Routes = [
   {
     path: 'lost-list',
     component: LostList, 
-    canActivate: [AuthGuard]
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'found-list',
     component: FoundList,
-    canActivate: [AuthGuard]
+    canActivate: [AdminAuthGuard]
   },
   {
     path: 'submission-progress',
@@ -68,6 +74,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: Register
+  },
+  {
+  path: 'unauthorized',
+  component: UnauthorizedComponent
   },
   {
     path: '',

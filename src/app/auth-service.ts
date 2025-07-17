@@ -26,7 +26,8 @@ export class AuthService {
         this.loginStatus.next(true)
         this.loggedInUserData.next({
           username: res.username,
-          email: res.email
+          email: res.email,
+          role: res.role
         })
       }
      )
@@ -40,7 +41,8 @@ export class AuthService {
         this.loginStatus.next(true)
         this.loggedInUserData.next({
           username: res.username,
-          email: res.email
+          email: res.email,
+          role: res.role
         })
       }
      )
@@ -49,6 +51,7 @@ export class AuthService {
 
   logOut(){
     this.loginStatus.next(false)
+    this.loggedInUserData.next(null)
     localStorage.removeItem(this.authKey)
   }
 

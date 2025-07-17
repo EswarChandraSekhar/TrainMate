@@ -26,6 +26,7 @@ import { FoundPipePipe } from './found-pipe-pipe';
 import { AuthInterceptor } from './auth-interceptor';
 import { AdminPanel } from './admin-panel/admin-panel';
 import { UserPanel } from './user-panel/user-panel';
+import { UnauthorizedComponent } from './unauthorized-component/unauthorized-component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { UserPanel } from './user-panel/user-panel';
     EditFoundDialog,
     FoundPipePipe,
     AdminPanel,
-    UserPanel
+    UserPanel,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,

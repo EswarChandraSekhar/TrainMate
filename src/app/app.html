@@ -29,16 +29,16 @@
        <li class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('home')" [ngClass]="{'active': activeTab === 'home'}">Home</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="loginStatus === true" class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('lost-form')" [ngClass]="{'active': activeTab === 'lost-form'}" >Lost-Item</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="loginStatus === true" class="nav-item">
           <a class="nav-link text-white fw-medium"(click)="handleclick('found-form')" [ngClass]="{'active': activeTab === 'found-form'}" >Found-Item</a>
         </li>
-        <li *ngIf="loginStatus === true" class="nav-item">
+        <li *ngIf="loginStatus === true && loggedInUserData.role === 'admin' " class="nav-item">
           <a class="nav-link text-white fw-medium"(click)="handleclick('lost-list')" [ngClass]="{'active': activeTab === 'lost-list'}" >Lost-List</a>
         </li>
-        <li *ngIf="loginStatus === true" class="nav-item">
+        <li *ngIf="loginStatus === true && loggedInUserData.role === 'admin'" class="nav-item">
           <a class="nav-link text-white fw-medium"(click)="handleclick('found-list')" [ngClass]="{'active': activeTab === 'found-list'}" >Found-List</a>
         </li>
         <li class="nav-item">
@@ -47,10 +47,10 @@
         <li class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('reactions')" [ngClass]="{'active': activeTab === 'reactions'}" >Reactions</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="loginStatus === true && loggedInUserData.role === 'admin' " class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('admin-panel')" [ngClass]="{'active': activeTab === 'admin-panel'}" >Admin-Panel</a>
         </li>
-         <li class="nav-item">
+         <li *ngIf="loginStatus === true" class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('user-panel')" [ngClass]="{'active': activeTab === 'user-panel'}" >User-Panel</a>
         </li>
         <li *ngIf="loginStatus === false"  class="nav-item">
