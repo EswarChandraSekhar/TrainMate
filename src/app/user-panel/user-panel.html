@@ -1,0 +1,109 @@
+<div class="profile-container">
+
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-avatar"></div>
+      <div class="profile-details">
+        <div class="name">Eswar Chandra Sekhar ✅</div>
+        <div class="info"><strong>Email:</strong> eswar&#64;example.com</div>
+        <div class="info"><strong>Phone:</strong> +91-9876543210</div>
+        <div class="info"><strong>Member Since:</strong> January 2024</div>
+        <div class="info"><strong>Role:</strong> User</div>
+      </div>
+      <div class="profile-actions">
+        <div class="btn edit">✏️ Edit</div>
+        <div class="btn logout">🚪 Logout</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" data-bs-target="#transactions">Transactions</div>
+    <div class="tab" data-bs-target="#lost">Lost Items</div>
+    <div class="tab" data-bs-target="#found">Found Items</div>
+  </div>
+
+  <!-- Tab Contents -->
+  <div class="tab-content">
+    <!-- Transactions -->
+    <div class="tab-pane active" id="transactions">
+      <div class="section-title">🧾 Recent Transactions</div>
+      <div class="custom-table">
+        <div class="row header">
+          <div>ID</div>
+          <div>Item</div>
+          <div>Date</div>
+          <div>Status</div>
+        </div>
+        <div class="row">
+          <div>TX001</div>
+          <div>Backpack</div>
+          <div>2025-06-20</div>
+          <div class="badge success">Resolved</div>
+        </div>
+        <div class="row">
+          <div>TX002</div>
+          <div>Wallet</div>
+          <div>2025-06-22</div>
+          <div class="badge pending">Pending</div>
+        </div>
+        <div class="row">
+          <div>TX003</div>
+          <div>ID Card</div>
+          <div>2025-07-01</div>
+          <div class="badge danger">Escalated</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lost Items -->
+    <div class="tab-pane" id="lost">
+      <div class="section-title">🔍 Your Lost Items</div>
+      <div class="card-list">
+        <div class="item-card">
+          <div class="item-title">💻 Laptop</div>
+          <div><strong>Date:</strong> 2025-06-18</div>
+          <div><strong>Status:</strong> <span class="badge pending">Pending</span></div>
+          <div><strong>Location:</strong> Library</div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">🔌 Charger</div>
+          <div><strong>Date:</strong> 2025-06-25</div>
+          <div><strong>Status:</strong> <span class="badge success">Resolved</span></div>
+          <div><strong>Location:</strong> Cafeteria</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Found Items -->
+    <div class="tab-pane" id="found">
+      <div class="section-title">📦 Items You Found</div>
+      <div class="card-list">
+        <div class="item-card">
+          <div class="item-title">🔵 Blue Pen Drive</div>
+          <div><strong>Date:</strong> 2025-06-30</div>
+          <div><strong>Location:</strong> Classroom B102</div>
+          <div><strong>Claimed:</strong> <span class="text-danger">No</span></div>
+        </div>
+        <div class="item-card">
+          <div class="item-title">☔ Umbrella</div>
+          <div><strong>Date:</strong> 2025-07-05</div>
+          <div><strong>Location:</strong> Admin Block</div>
+          <div><strong>Claimed:</strong> <span class="text-success">Yes</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Message -->
+  <div class="info-message">
+    <h5>ℹ️ Please Note</h5>
+    <p>This platform connects people who have lost and found items.</p>
+    <p>We notify you if someone reports your lost item. 💡</p>
+    <p class="text-danger fw-bold">
+      We can’t guarantee recovery unless it's reported. Check regularly & stay hopeful.
+    </p>
+  </div>
+</div>

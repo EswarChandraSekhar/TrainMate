@@ -12,16 +12,24 @@ import { Observable } from 'rxjs';
 export class App {
 
   loginStatus: boolean = false;
+  loggedInUserData: any = null;
 
   activeTab: string = 'home';
 
   constructor(private router: Router, private authservice: AuthService) {}
 
   ngOnInit(): void {
-    this.authservice.checkLogin()
-    this.authservice.loginstatus$.subscribe(res=>{
-      this.loginStatus = res;
+    this.authservice.checkLogin().subscribe(res=>{
+
     })
+    this.authservice.loginstatus$.subscribe(res=>{
+      this.loginStatus = res;  
+
+    })
+    this.authservice.loggedInUserData$.subscribe(res=>{
+      this.loggedInUserData = res;
+    })
+    
     // Active route set-up
     let currentUrl = location.href;
 

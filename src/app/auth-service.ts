@@ -13,6 +13,9 @@ export class AuthService {
   loginStatus: BehaviorSubject<boolean> = new BehaviorSubject(false)
   loginstatus$:Observable<boolean> = this.loginStatus.asObservable()
 
+  loggedInUserData: BehaviorSubject<any> = new BehaviorSubject(null)
+  loggedInUserData$:Observable<any> = this.loggedInUserData.asObservable()
+
   constructor(private http: HttpClient) { }
 
   register(user:any):Observable<any>{
@@ -21,6 +24,10 @@ export class AuthService {
         console.log("Register response:", res);
         this.settoken(res.token)
         this.loginStatus.next(true)
+        this.loggedInUserData.next({
+          username: res.username,
+          email: res.email
+        })
       }
      )
     )
@@ -31,6 +38,10 @@ export class AuthService {
       tap((res:any)=>{
         this.settoken(res.token)
         this.loginStatus.next(true)
+        this.loggedInUserData.next({
+          username: res.username,
+          email: res.email
+        })
       }
      )
     )
@@ -51,11 +62,14 @@ export class AuthService {
   }
 
   checkLogin(){
-    let token = this.gettoken()
-    if(token){
-      this.loginStatus.next(true)
-    }
-  }
+    return this.http.post(this.authUrl + '/verify-token', {}).pipe(
+      tap((res:any)=>{
+        this.loginStatus.next(true)
+        this.loggedInUserData.next(res.user)
+      })
+    )
 
+
+}
 
 }

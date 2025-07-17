@@ -23,7 +23,10 @@
     <!-- Nav Links -->
     <div class="collapse navbar-collapse" id="railNavbar">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3 align-items-lg-center">
-        <li class="nav-item">
+        <li *ngIf="loggedInUserData !== null" class="nav-item">
+          <span class="nav-link text-white fw-medium small text-opacity-75">Welcome, {{ loggedInUserData.username }}!</span>
+        </li>
+       <li class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('home')" [ngClass]="{'active': activeTab === 'home'}">Home</a>
         </li>
         <li class="nav-item">
@@ -43,6 +46,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('reactions')" [ngClass]="{'active': activeTab === 'reactions'}" >Reactions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white fw-medium" (click)="handleclick('admin-panel')" [ngClass]="{'active': activeTab === 'admin-panel'}" >Admin-Panel</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link text-white fw-medium" (click)="handleclick('user-panel')" [ngClass]="{'active': activeTab === 'user-panel'}" >User-Panel</a>
         </li>
         <li *ngIf="loginStatus === false"  class="nav-item">
           <a class="btn btn-outline-light btn-sm px-3" (click)="handleclick('login')" [ngClass]="{'active': activeTab === 'login'}">Login</a>

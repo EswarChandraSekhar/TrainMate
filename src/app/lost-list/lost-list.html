@@ -21,6 +21,8 @@
           <th>Description</th>
           <th>Proof</th>
           <th>Actions</th>
+          <th>Status</th>
+
         </tr>
       </thead>
       <tbody *ngIf="LostListLoader === false" class="text-center" >
@@ -39,6 +41,22 @@
           <td class="text-start">
             <span class="text-muted small">{{ lost.proof }}</span>
           </td>
+          <!-- ✅ New Status Dropdown -->
+  <td>
+    <select class="form-select form-select-sm fw-semibold text-center"
+            [ngClass]="{
+              'bg-primary text-white': lost.status === 'Pending',
+              'bg-warning text-dark': lost.status === 'In Progress',
+              'bg-success text-white': lost.status === 'Matched',
+              'bg-danger text-white': lost.status === 'Not Matched'
+            }" style="min-width: 140px; box-shadow: 0 0 5px rgba(0,0,0,0.1);"
+            [(ngModel)]="lost.status">
+      <option value="Pending">Pending</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Matched">Matched</option>  
+      <option value="Not Matched">Not Matched</option>
+    </select>
+  </td>
           <td class="text-center">
           <div class="d-flex justify-content-center align-items-center gap-2">
               <!-- Edit Button -->

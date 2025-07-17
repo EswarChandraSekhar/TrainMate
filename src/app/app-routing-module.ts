@@ -12,7 +12,8 @@ import { Login } from './login/login';
 import { Register } from './register/register';
 import { FoundList } from './found-list/found-list';
 import { AuthGuard } from './auth-guard';
-
+import { AdminPanel } from './admin-panel/admin-panel';
+import { UserPanel } from './user-panel/user-panel';
 const routes: Routes = [
   {
     path: 'home',
@@ -25,6 +26,14 @@ const routes: Routes = [
   {
     path: 'found-form',
     component: FoundForm
+  },
+  {
+    path: 'admin-panel',
+    component: AdminPanel
+  },
+  {
+    path: 'user-panel',
+    component: UserPanel
   },
   {
     path: 'about-us',

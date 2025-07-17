@@ -2,6 +2,8 @@ import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -21,9 +23,9 @@ import { Register } from './register/register';
 import { FoundList } from './found-list/found-list';
 import { EditFoundDialog } from './edit-found-dialog/edit-found-dialog';
 import { FoundPipePipe } from './found-pipe-pipe';
-import { HttpInterceptor } from '@angular/common/http';
 import { AuthInterceptor } from './auth-interceptor';
-
+import { AdminPanel } from './admin-panel/admin-panel';
+import { UserPanel } from './user-panel/user-panel';
 
 @NgModule({
   declarations: [
@@ -42,18 +44,22 @@ import { AuthInterceptor } from './auth-interceptor';
     Register,
     FoundList,
     EditFoundDialog,
-    FoundPipePipe
+    FoundPipePipe,
+    AdminPanel,
+    UserPanel
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    HighchartsChartModule,
+    RouterModule    // ✅ Added here
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [App]
 })
