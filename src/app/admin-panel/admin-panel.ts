@@ -38,7 +38,7 @@ export class AdminPanel implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('🟡 AdminPanel initialized');
+    console.log ('🟡 AdminPanel initialized');
     this.loadDashboardData();
   }
 

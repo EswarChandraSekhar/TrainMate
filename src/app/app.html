@@ -51,7 +51,7 @@
           <a class="nav-link text-white fw-medium" (click)="handleclick('admin-panel')" [ngClass]="{'active': activeTab === 'admin-panel'}" >Admin-Panel</a>
         </li>
          <li *ngIf="loginStatus === true" class="nav-item">
-          <a class="nav-link text-white fw-medium" (click)="handleclick('user-panel')" [ngClass]="{'active': activeTab === 'user-panel'}" >User-Panel</a>
+          <a class="nav-link text-white fw-medium" (click)="handleclick('user')" [ngClass]="{'active': activeTab === 'user'}" >User</a>
         </li>
         <li *ngIf="loginStatus === false"  class="nav-item">
           <a class="btn btn-outline-light btn-sm px-3" (click)="handleclick('login')" [ngClass]="{'active': activeTab === 'login'}">Login</a>

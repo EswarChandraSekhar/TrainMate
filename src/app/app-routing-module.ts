@@ -13,9 +13,9 @@ import { Register } from './register/register';
 import { FoundList } from './found-list/found-list';
 import { AuthGuard } from './auth-guard';
 import { AdminPanel } from './admin-panel/admin-panel';
-import { UserPanel } from './user-panel/user-panel';
 import { UnauthorizedComponent } from './unauthorized-component/unauthorized-component';
 import { AdminAuthGuard } from './admin-auth-guard';
+import { User } from './user/user';
 const routes: Routes = [
   {
     path: 'home',
@@ -37,8 +37,8 @@ const routes: Routes = [
     canActivate: [AdminAuthGuard]
   },
   {
-    path: 'user-panel',
-    component: UserPanel,
+    path: 'user',
+    component: User,
     canActivate: [AuthGuard]
   },
   {

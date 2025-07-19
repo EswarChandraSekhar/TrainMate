@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,8 +11,10 @@ export class UserProfileService {
   constructor(private http: HttpClient) {}
 
   getUserData(): Observable<any> {
-    const email = localStorage.getItem('userEmail');
-    const params = new HttpParams().set('email', email || '');
-    return this.http.get<any>(this.apiUrl, { params });
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get<any>(this.apiUrl, { headers });
   }
 }
