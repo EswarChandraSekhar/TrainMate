@@ -1,0 +1,15 @@
+.form-box input,
+.form-box textarea,
+.form-box select {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  transition: 0.3s ease;
+}
+
+.form-box input:focus,
+.form-box textarea:focus,
+.form-box select:focus {
+  border-color: #ff3366;
+  box-shadow: 0 0 0 4px rgba(255, 51, 102, 0.1);
+}

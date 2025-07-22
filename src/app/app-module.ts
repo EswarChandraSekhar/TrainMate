@@ -27,6 +27,8 @@ import { AuthInterceptor } from './auth-interceptor';
 import { AdminPanel } from './admin-panel/admin-panel';
 import { UnauthorizedComponent } from './unauthorized-component/unauthorized-component';
 import { User } from './user/user';
+import { ReactForm } from './react-form/react-form';
+import { ReactionList } from './reaction-list/reaction-list';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { User } from './user/user';
     FoundPipePipe,
     AdminPanel,
     UnauthorizedComponent,
-    User
+    User,
+    ReactForm,
+    ReactionList
   ],
   imports: [
     BrowserModule,

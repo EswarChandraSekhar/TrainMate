@@ -47,6 +47,9 @@
         <li class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('reactions')" [ngClass]="{'active': activeTab === 'reactions'}" >Reactions</a>
         </li>
+         <li *ngIf="loginStatus === true && loggedInUserData.role === 'admin' " class="nav-item">
+          <a class="nav-link text-white fw-medium" (click)="handleclick('reactions-list')" [ngClass]="{'active': activeTab === 'reactions-list'}" >React-List</a>
+        </li>
         <li *ngIf="loginStatus === true && loggedInUserData.role === 'admin' " class="nav-item">
           <a class="nav-link text-white fw-medium" (click)="handleclick('admin-panel')" [ngClass]="{'active': activeTab === 'admin-panel'}" >Admin-Panel</a>
         </li>
@@ -56,7 +59,7 @@
         <li *ngIf="loginStatus === false"  class="nav-item">
           <a class="btn btn-outline-light btn-sm px-3" (click)="handleclick('login')" [ngClass]="{'active': activeTab === 'login'}">Login</a>
         </li>
-         <li *ngIf="loginStatus=== true" class="nav-item">
+         <li *ngIf="loginStatus === true" class="nav-item">
           <a class="btn btn-outline-light btn-sm px-3" (click)="handleLogout()" >Logout</a>
         </li>
       </ul>

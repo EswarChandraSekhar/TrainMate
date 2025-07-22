@@ -16,6 +16,8 @@ import { AdminPanel } from './admin-panel/admin-panel';
 import { UnauthorizedComponent } from './unauthorized-component/unauthorized-component';
 import { AdminAuthGuard } from './admin-auth-guard';
 import { User } from './user/user';
+import { ReactionList } from './reaction-list/reaction-list';
+import { ReactForm } from './react-form/react-form';
 const routes: Routes = [
   {
     path: 'home',
@@ -48,6 +50,16 @@ const routes: Routes = [
   {
     path: 'reactions',
     component: Reactions
+  },
+  {
+    path: 'react-form',
+    component: ReactForm,
+    canActivate: [AuthGuard]
+  },
+  {
+  path: 'reactions-list',
+  component: ReactionList,
+  canActivate: [AdminAuthGuard]
   },
   {
     path: 'lost-list',
