@@ -1,135 +1,155 @@
-<!-- ✅ TrainMate Admin Dashboard - Redesigned Version -->
-<div class="container py-4">
-  <!-- Header -->
-  <div class="text-center mb-4">
-    <h2 class="fw-bold text-primary">🚉 TrainMate Admin Dashboard</h2>
-    <p class="text-muted">Monitor and manage Lost & Found activity across Indian Railways</p>
-  </div>
+<div class="d-flex" style="min-height: 100vh;">
+  <!-- Sidebar -->
+  <nav class="custom-sidenav">
+  <h4 class="mb-4">🛠 Admin Panel</h4>
+  <ul class="nav flex-column">
+    <li class="nav-item mb-3">
+      <a (click)="goToReactionList()" class="nav-link nav-link-custom" routerLinkActive="active">
+        🧾 Reaction List
+      </a>
+    </li>
+    <li class="nav-item mb-3">
+      <a (click)="goToLostList()" class="nav-link nav-link-custom" routerLinkActive="active">
+        🧾 Lost Item List
+      </a>
+    </li>
+    <li class="nav-item mb-3">
+      <a (click)="goToFoundList()" class="nav-link nav-link-custom" routerLinkActive="active">
+        🧾 Found Item List
+      </a>
+    </li>
+  </ul>
+</nav>
 
-  <!-- 🔄 Loader for Dashboard Summary -->
-  <div *ngIf="isLoading" class="text-center my-5">
-    <div class="spinner-border text-primary" role="status"></div>
-    <p>Loading Dashboard Summary...</p>
-  </div>
 
-  <!-- ✅ Cards + Chart Section (after loading) -->
-  <div class="container mt-4" *ngIf="!isLoading">
-    <div class="row">
-      <!-- Left Column: Cards -->
-      <div class="col-md-5">
-        <div class="container-fluid">
-          <!-- First 4 cards in 2 columns (2 rows) -->
-          <div class="row mb-3">
-            <div class="col-6 mb-3">
-              <div class="card text-white bg-secondary px-3 py-3 rounded-4">
-                <h6>📦 Lost Reports</h6>
-                <h2>{{ lostCount }}</h2>
+  <!-- Main Dashboard Content -->
+  <div class="flex-grow-1" style="background-color: #f8f9fa;">
+    <div class="container py-4">
+      <!-- Header -->
+      <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">🚉 TrainMate Admin Dashboard</h2>
+        <p class="text-muted">Monitor and manage Lost & Found activity across Indian Railways</p>
+      </div>
+
+      <!-- Loader -->
+      <div *ngIf="isLoading" class="text-center my-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p>Loading Dashboard Summary...</p>
+      </div>
+
+      <!-- Cards + Chart Section -->
+      <div class="container mt-4" *ngIf="!isLoading">
+        <div class="row">
+          <!-- Cards -->
+          <div class="col-md-5">
+            <div class="container-fluid">
+              <div class="row mb-3">
+                <div class="col-6 mb-3">
+                  <div class="card text-white bg-secondary px-3 py-3 rounded-4">
+                    <h6>📦 Lost Reports</h6>
+                    <h2>{{ lostCount }}</h2>
+                  </div>
+                </div>
+                <div class="col-6 mb-3">
+                  <div class="card text-white bg-primary px-3 py-3 rounded-4">
+                    <h6>🔍 Found Reports</h6>
+                    <h2>{{ foundCount }}</h2>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="card text-white bg-info px-3 py-3 rounded-4">
+                    <h6>🔗 Smart Matches</h6>
+                    <h2>{{ smartMatchCount }}</h2>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="card text-white bg-danger px-3 py-3 rounded-4">
+                    <h6>❌ Rejected Matches</h6>
+                    <h2>{{ rejectedMatchCount }}</h2>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-6 mb-3">
-              <div class="card text-white bg-primary px-3 py-3 rounded-4">
-                <h6>🔍 Found Reports</h6>
-                <h2>{{ foundCount }}</h2>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="card text-white bg-info px-3 py-3 rounded-4">
-                <h6>🔗 Smart Matches</h6>
-                <h2>{{ smartMatchCount }}</h2>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="card text-white bg-danger px-3 py-3 rounded-4">
-                <h6>❌ Rejected Matches</h6>
-                <h2>{{ rejectedMatchCount }}</h2>
+
+              <!-- Full-width card -->
+              <div class="row">
+                <div class="col-12">
+                  <div class="card text-white bg-success px-3 py-3 rounded-4">
+                    <h6>⏳ Completed Matches</h6>
+                    <h2>{{ completedMatchCount }}</h2>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Last card spans full width -->
-          <div class="row">
-            <div class="col-12">
-              <div class="card text-white bg-success px-3 py-3 rounded-4">
-                <h6>⏳ Completed Matches</h6>
-                <h2>{{ completedMatchCount }}</h2>
-              </div>
-            </div>
+          <!-- Chart -->
+          <div class="col-md-7">
+            <highcharts-chart *ngIf="chartOptions && chartOptions.series?.length"
+              [Highcharts]="Highcharts"
+              [options]="chartOptions"
+              style="width: 100%; height: 400px; display: block;">
+            </highcharts-chart>
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Highcharts -->
-      <div class="col-md-7">
-        <highcharts-chart *ngIf="chartOptions && chartOptions.series?.length"
-          [Highcharts]="Highcharts"
-          [options]="chartOptions"
-          style="width: 100%; height: 400px; display: block;">
-        </highcharts-chart>
+      <!-- Smart Match Section -->
+      <div class="container my-4" style="width: 100%;">
+        <h4 class="text-success text-center mb-4">Smart Match Suggestions</h4>
+
+        <div *ngIf="isLoading === true" class="text-center my-5">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p>Loading Matches...</p>
+        </div>
+
+        <div *ngIf="!isLoading && matches.length === 0" class="alert alert-info text-center">
+          No smart match suggestions found.
+        </div>
+
+        <div class="table-responsive" *ngIf="isLoading === false && matches.length > 0">
+          <table class="table table-bordered align-middle shadow-sm">
+            <thead class="table-light text-center">
+              <tr>
+                <th>#</th>
+                <th>Lost Item Details</th>
+                <th>Found Item Details</th>
+                <th>Confidence</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let match of matches; let i = index">
+                <td class="text-center">{{ i + 1 }}</td>
+                <td class="text-start">
+                  <div><strong>Item Name:</strong> {{ match.lostId?.itemname }}</div>
+                  <div><strong>Lost By:</strong> {{ match.lostId?.fullnameofuser }}</div>
+                  <div><strong>Coach/Seat:</strong> {{ match.lostId?.coachnum }} / {{ match.lostId?.seatnum }}</div>
+                  <div><strong>Train No.:</strong> {{ match.lostId?.trainNumber }}</div>
+                  <div><strong>Train Name:</strong> {{ match.lostId?.trainName }}</div>
+                  <div><strong>Date:</strong> {{ match.lostId?.dateoflost }}</div>
+                </td>
+                <td class="text-start">
+                  <div><strong>Item Name:</strong> {{ match.foundId?.itemname }}</div>
+                  <div><strong>Found By:</strong> {{ match.foundId?.fullname }}</div>
+                  <div><strong>Location:</strong> {{ match.foundId?.location }}</div>
+                  <div><strong>Train No.:</strong> {{ match.foundId?.trainNumber }}</div>
+                  <div><strong>Train Name:</strong> {{ match.foundId?.trainName }}</div>
+                  <div><strong>Date:</strong> {{ match.foundId?.dateoffound }}</div>
+                </td>
+                <td class="text-center">
+                  <span class="badge bg-info text-dark">
+                    {{ getConfidencePercent(match.confidence) }}
+                  </span>
+                </td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-success me-1" (click)="investigateMatch(match.lostId, match.foundId)">Investigate Now</button>
+                  <button class="btn btn-sm btn-danger">Reject</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- 🔁 Smart Match Suggestions Section -->
-  <div class="container my-4">
-    <h4 class="text-success text-center mb-4">Smart Match Suggestions</h4>
-
-    <div *ngIf="isLoading === true" class="text-center my-5">
-      <div class="spinner-border text-primary" role="status"></div>
-      <p>Loading Matches...</p>
-    </div>
-
-    <div *ngIf="!isLoading && matches.length === 0" class="alert alert-info text-center">
-      No smart match suggestions found.
-    </div>
-
-    <div class="table-responsive" *ngIf="isLoading === false && matches.length > 0">
-      <table class="table table-bordered align-middle shadow-sm">
-        <thead class="table-light text-center">
-          <tr>
-            <th>#</th>
-            <th>Lost Item Details</th>
-            <th>Found Item Details</th>
-            <th>Confidence</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let match of matches; let i = index">
-            <td class="text-center">{{ i + 1 }}</td>
-
-            <!-- LOST ITEM -->
-            <td class="text-start">
-              <div><strong>Item Name:</strong> {{ match.lostId?.itemname }}</div>
-              <div><strong>Lost By:</strong> {{ match.lostId?.fullnameofuser }}</div>
-              <div><strong>Coach/Seat:</strong> {{ match.lostId?.coachnum }} / {{ match.lostId?.seatnum }}</div>
-              <div><strong>Train No.:</strong> {{ match.lostId?.trainNumber }}</div>
-              <div><strong>Train Name:</strong> {{ match.lostId?.trainName }}</div>
-              <div><strong>Date:</strong> {{ match.lostId?.dateoflost }}</div>
-            </td>
-
-            <!-- FOUND ITEM -->
-            <td class="text-start">
-              <div><strong>Item Name:</strong> {{ match.foundId?.itemname }}</div>
-              <div><strong>Found By:</strong> {{ match.foundId?.fullname }}</div>
-              <div><strong>Location:</strong> {{ match.foundId?.location }}</div>
-              <div><strong>Train No.:</strong> {{ match.foundId?.trainNumber }}</div>
-              <div><strong>Train Name:</strong> {{ match.foundId?.trainName }}</div>
-              <div><strong>Date:</strong> {{ match.foundId?.dateoffound }}</div>
-            </td>
-
-            <td class="text-center">
-              <span class="badge bg-info text-dark">
-                {{ getConfidencePercent(match.confidence) }}
-              </span>
-            </td>
-
-            <td class="text-center">
-              <button class="btn btn-sm btn-success me-1">Confirm</button>
-              <button class="btn btn-sm btn-danger">Reject</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>

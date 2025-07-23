@@ -18,6 +18,7 @@ import { AdminAuthGuard } from './admin-auth-guard';
 import { User } from './user/user';
 import { ReactionList } from './reaction-list/reaction-list';
 import { ReactForm } from './react-form/react-form';
+import { InvestigateMatch } from './investigate-match/investigate-match';
 const routes: Routes = [
   {
     path: 'home',
@@ -90,6 +91,11 @@ const routes: Routes = [
   {
   path: 'unauthorized',
   component: UnauthorizedComponent
+  },
+  {
+    path: 'investigate-match',
+    component: InvestigateMatch,
+    canActivate: [AdminAuthGuard]
   },
   {
     path: '',

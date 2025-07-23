@@ -1,9 +1,15 @@
+<!-- Container for Lost Item Reports -->
 <div class="container py-5">
-  <h2 class="text-center fw-bold mb-4" style="color: #1A2B49;">
-    🧾 Submitted Lost Item Reports
-  </h2>
 
-
+  <!-- Header Row: Back Button + Page Title -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <button class="btn btn-outline-primary fw-semibold px-3 py-2" (click)="goToAdminPanel()">
+      ← Back to Admin Panel
+    </button>
+    <h2 class="m-0 fw-bold" style="color: #1A2B49;">
+      🧾 Submitted Lost Item Reports
+    </h2>
+  </div>
 
   <!-- Lost Reports Table -->
   <div class="table-responsive">
@@ -22,10 +28,9 @@
           <th>Proof</th>
           <th>Actions</th>
           <th>Status</th>
-
         </tr>
       </thead>
-      <tbody *ngIf="LostListLoader === false" class="text-center" >
+      <tbody *ngIf="LostListLoader === false" class="text-center">
         <tr *ngFor="let lost of lostReports; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ lost.fullnameofuser }}</td>
@@ -36,29 +41,13 @@
           <td>{{ lost.itemname }}</td>
           <td>{{ lost.dateoflost | date:'mediumDate' }}</td>
           <td class="text-start">
-            <span  class="text-muted small">{{ lost.description }}</span>
+            <span class="text-muted small">{{ lost.description }}</span>
           </td>
           <td class="text-start">
             <span class="text-muted small">{{ lost.proof }}</span>
           </td>
-          <!-- ✅ New Status Dropdown -->
-  <td>
-    <select class="form-select form-select-sm fw-semibold text-center"
-            [ngClass]="{
-              'bg-primary text-white': lost.status === 'Pending',
-              'bg-warning text-dark': lost.status === 'In Progress',
-              'bg-success text-white': lost.status === 'Matched',
-              'bg-danger text-white': lost.status === 'Not Matched'
-            }" style="min-width: 140px; box-shadow: 0 0 5px rgba(0,0,0,0.1);"
-            [(ngModel)]="lost.status">
-      <option value="Pending">Pending</option>
-      <option value="In Progress">In Progress</option>
-      <option value="Matched">Matched</option>  
-      <option value="Not Matched">Not Matched</option>
-    </select>
-  </td>
           <td class="text-center">
-          <div class="d-flex justify-content-center align-items-center gap-2">
+            <div class="d-flex justify-content-center align-items-center gap-2">
               <!-- Edit Button -->
               <button class="btn btn-sm btn-outline-primary" (click)="onEdit(lost)" title="Edit">
                 <i class="bi bi-pencil-square"></i>
@@ -67,16 +56,34 @@
               <button class="btn btn-sm btn-outline-danger" (click)="onDelete(lost)" title="Delete">
                 <i class="bi bi-trash"></i>
               </button>
-          </div>
+            </div>
+          </td>
+          <!-- Status Dropdown -->
+          <td>
+            <select class="form-select form-select-sm fw-semibold text-center"
+                    [ngClass]="{
+                      'bg-primary text-white': lost.status === 'Pending',
+                      'bg-warning text-dark': lost.status === 'In Progress',
+                      'bg-success text-white': lost.status === 'Matched',
+                      'bg-danger text-white': lost.status === 'Not Matched'
+                    }"
+                    style="min-width: 140px; box-shadow: 0 0 5px rgba(0,0,0,0.1);"
+                    [(ngModel)]="lost.status">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Matched">Matched</option>
+              <option value="Not Matched">Not Matched</option>
+            </select>
           </td>
         </tr>
       </tbody>
+
+      <!-- Loader while fetching -->
       <tbody *ngIf="LostListLoader === true">
-         <tr >
-           <td colspan="11" class="text-center"><app-loader></app-loader></td>
-         </tr>
+        <tr>
+          <td colspan="12" class="text-center"><app-loader></app-loader></td>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
-

@@ -95,7 +95,7 @@ export class LostForm implements OnInit {
       this.lostservice.addLostItem(lost).subscribe(
         (response)=>{
            console.log('Successfully added:', response);
-          this.router.navigate(['/lost-list'])
+          this.router.navigate(['/submission-progress'])
         },
         (error)=>{
           console.error('Add failed:', error);

@@ -15,14 +15,15 @@ export class ReactionService {
     return this.http.post(this.apiUrl + '/api/reactions', reaction);
   }
 
-  getAllReactions(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + '/api/reactions');
+  getAllReactions(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl + '/api/reactions');
   }
 
   // Delete a reaction by _id
   deleteReaction(reaction: any): Observable<any> {
     return this.http.delete<any>(this.apiUrl + '/api/reactions/' + reaction._id);
   }
+
   // Approve a reaction
   approveReaction(reactionId: string): Observable<any> {
     return this.http.put<any>(this.apiUrl + '/api/reactions/' + reactionId + '/approve', {});

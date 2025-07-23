@@ -4,6 +4,7 @@ import { LostService } from '../lost-service';
 import { FoundService } from '../found-service';
 import * as Highcharts from 'highcharts';
 import { lastValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel',
@@ -31,6 +32,7 @@ export class AdminPanel implements OnInit {
   chartOptions: Highcharts.Options = {};
 
   constructor(
+    private router: Router,
     private matchService: MatchService,
     private lostService: LostService,
     private foundService: FoundService,
@@ -82,6 +84,23 @@ export class AdminPanel implements OnInit {
       console.log('✅ Dashboard loading complete');
     }
   }
+
+goToReactionList() {
+  this.router.navigate(['/reactions-list']);
+}
+goToLostList() {
+  this.router.navigate(['/lost-list']);
+}
+goToFoundList() {
+  this.router.navigate(['/found-list']);
+}
+
+
+investigateMatch(lostItem: any, foundItem: any) {
+  this.router.navigate(['/investigate-match'], {
+    state: { lostItem, foundItem }
+  });
+}
 
   updateChart(): void {
     console.log('📊 Updating Highcharts with current counts...');

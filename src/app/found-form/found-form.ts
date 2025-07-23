@@ -78,7 +78,7 @@ export class FoundForm implements OnInit {
   if (this.FoundData === null) {
     this.foundservice.addFoundItem(found).subscribe(
       (response) => {
-        this.router.navigate(['/found-list']);
+        this.router.navigate(['/found-form-submission']);
       },
       (error) => {
         this.snackbar.open('Failed to add found item', 'Close', { duration: 3000 });

@@ -2,7 +2,7 @@
   <!-- Our Intention Message -->
     <div class="mb-4 p-4 rounded-4 text-white text-center"
       style="background: linear-gradient(135deg, #1d3557, #457b9d);">
-      <h2 class="mb-2">👋 Welcome to Your Dashboard</h2>
+      <h2 class="mb-2">👋 Welcome ---{{ user?.name }}--- to Your Dashboard</h2>
       <p class="mb-0 fs-5">
         Our intention is to make your travel experience better — help fellow passengers by reporting what you found while
         travelling through Indian Railways 🚆
@@ -66,7 +66,7 @@
     <div class="d-flex justify-content-center mb-4 gap-3">
       <button class="btn btn-outline-danger px-4 fw-semibold" [class.active]="viewMode === 'lost'"
         (click)="viewMode = 'lost'">
-        <i class="bi bi-exclamation-circle me-1"></i>Lost Items
+        <i class="bi bi-exclamation-circle me-1"></i>My Lost Items
       </button>
       <button class="btn btn-outline-danger px-4 fw-semibold" [class.active]="viewMode === 'found'"
         (click)="viewMode = 'found'">

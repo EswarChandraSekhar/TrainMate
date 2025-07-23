@@ -29,6 +29,7 @@ import { UnauthorizedComponent } from './unauthorized-component/unauthorized-com
 import { User } from './user/user';
 import { ReactForm } from './react-form/react-form';
 import { ReactionList } from './reaction-list/reaction-list';
+import { InvestigateMatch } from './investigate-match/investigate-match';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ReactionList } from './reaction-list/reaction-list';
     UnauthorizedComponent,
     User,
     ReactForm,
-    ReactionList
+    ReactionList,
+    InvestigateMatch
   ],
   imports: [
     BrowserModule,

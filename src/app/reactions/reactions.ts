@@ -10,9 +10,9 @@ import { AuthService } from '../auth-service';
   styleUrl: './reactions.css'
 })
 export class Reactions {
-  approvedReactions: any[] = [];
-    isAdmin = false;
 
+  approvedReactions: any[] = [];
+    isAdmin: boolean | null = null;
 
   constructor(private reactionService: ReactionService, private authservice: AuthService) {}
 
@@ -41,27 +41,13 @@ deleteApprovedReaction(reactionId: string) {
 
   this.reactionService.deleteApprovedReaction(reactionId).subscribe({
     next: () => {
-      this.approvedReactions = this.approvedReactions.filter(r => r._id !== reactionId);
+      this.approvedReactions = this.approvedReactions.filter(res => res._id !== reactionId);
     },
     error: err => {
       console.error('Delete failed', err);
       alert('Delete failed');
     }
   });
-}
-
-
-getColor(type: string | undefined): string {
-  if (!type) return 'gray'; // default/fallback color
-
-  switch (type.toLowerCase()) {
-    case 'lost':
-      return 'red';
-    case 'found':
-      return 'green';
-    default:
-      return 'gray';
-  }
 }
 
 }

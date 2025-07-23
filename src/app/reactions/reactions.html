@@ -22,7 +22,7 @@
             }"
           >
             {{ reaction.firstName }} –
-            <span *ngIf="reaction.itemType === 'found'">🎉 <strong>Found</strong></span>
+            <span *ngIf="reaction.itemType === 'found'">🎉 <strong>I Found</strong></span>
             <span *ngIf="reaction.itemType === 'lost'">😢 <strong>Lost</strong></span>
             – <span class="text-dark">{{ reaction.title }}</span>
           </h5>
@@ -30,7 +30,7 @@
           <p class="card-text text-muted mt-2 flex-grow-1">“{{ reaction.description }}”</p>
           <!-- SHOW DELETE ONLY FOR ADMINS -->
     <button
-      *ngIf="isAdmin"
+      *ngIf="isAdmin === true"
       class="btn btn-sm btn-danger"
       (click)="deleteApprovedReaction(reaction._id)"
     >

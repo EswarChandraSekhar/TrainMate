@@ -3,6 +3,7 @@ import { FoundService } from '../found-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { EditFoundDialog } from '../edit-found-dialog/edit-found-dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-found-list',
@@ -22,7 +23,10 @@ export class FoundList implements OnInit {
  dateFilter: string = '';
 
 
-  constructor(private foundservice: FoundService, private snackBar: MatSnackBar, private matDialog: MatDialog) {}
+  constructor(private foundservice: FoundService, private snackBar: MatSnackBar, private matDialog: MatDialog, private router: Router) {}
+  goToAdminPanel(): void {
+    this.router.navigate(['/admin-panel']);
+  }
 
   ngOnInit(): void {
     this.loadfounditems();

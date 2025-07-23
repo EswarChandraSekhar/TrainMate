@@ -3,6 +3,7 @@ import { LostService } from '../lost-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { EditLostDialog } from '../edit-lost-dialog/edit-lost-dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,11 @@ export class LostList implements OnInit {
   selectedlostitem: any = null;
   LostListLoader: boolean = true;
 
-  constructor(private lostservice: LostService, private snackBar: MatSnackBar, private matDialog: MatDialog) {}
+  constructor(private lostservice: LostService, private snackBar: MatSnackBar, private matDialog: MatDialog, private router: Router) {}
+
+  goToAdminPanel(): void {
+    this.router.navigate(['/admin-panel']);
+  }
 
   ngOnInit(): void {
     this.loadLostItems();

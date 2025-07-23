@@ -1,32 +1,38 @@
+<!-- Container for Found Item Reports -->
 <div class="container py-5">
-  <h2 class="text-center fw-bold mb-4" style="color: #1A2B49;">
-    🧳 Submitted Found Item Reports
-  </h2>
+
+  <!-- Header Row: Back Button + Page Title -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <button class="btn btn-outline-primary fw-semibold px-3 py-2" (click)="goToAdminPanel()">
+      ← Back to Admin Panel
+    </button>
+    <h2 class="m-0 fw-bold" style="color: #1A2B49;">
+      🧳 Submitted Found Item Reports
+    </h2>
+  </div>
+
   <!-- Filter & Search Bar -->
-<div class="row g-3 mb-4 align-items-end">
-  
-  <!-- Search Bar -->
-  <div class="col-md-4">
-    <input [(ngModel)]="searchInput" type="text" class="form-control" placeholder="🔍 Search by item name">
+  <div class="row g-3 mb-4 align-items-end">
+    <!-- Search Bar -->
+    <div class="col-md-4">
+      <input [(ngModel)]="searchInput" type="text" class="form-control" placeholder="🔍 Search by item name">
+    </div>
+
+    <!-- Train Number Filter -->
+    <div class="col-md-2">
+      <input [(ngModel)]="trainNumberFilter" type="text" class="form-control" placeholder="Train Number">
+    </div>
+
+    <!-- Train Name Filter -->
+    <div class="col-md-3">
+      <input [(ngModel)]="trainNameFilter" type="text" class="form-control" placeholder="Train Name">
+    </div>
+
+    <!-- Date Found Filter -->
+    <div class="col-md-3">
+      <input [(ngModel)]="dateFilter" type="date" class="form-control">
+    </div>
   </div>
-
-  <!-- Train Number Filter -->
-  <div class="col-md-2">
-    <input [(ngModel)]="trainNumberFilter" type="text" class="form-control" placeholder="Train Number">
-  </div>
-
-  <!-- Train Name Filter -->
-  <div class="col-md-3">
-    <input  [(ngModel)]="trainNameFilter"  type="text" class="form-control" placeholder="Train Name">
-  </div>
-
-  <!-- Date Found Filter -->
-  <div class="col-md-3">
-    <input [(ngModel)]="dateFilter" type="date" class="form-control">
-  </div>
-
-</div>
-
 
   <!-- Found Reports Table -->
   <div class="table-responsive">
@@ -73,6 +79,8 @@
           </td>
         </tr>
       </tbody>
+
+      <!-- Loader while fetching -->
       <tbody *ngIf="foundListLoader === true">
         <tr>
           <td colspan="10" class="text-center"><app-loader></app-loader></td>
