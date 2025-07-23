@@ -26,6 +26,9 @@ export class LostForm implements OnInit {
   description: string = '';
   dateoflost: any = '';
   proof: any = '';
+  selectedFiles: any = []
+  previewFiles: any = []
+
 
   lostreports: any[] = [];
 
@@ -72,23 +75,39 @@ export class LostForm implements OnInit {
       return;
     }
 
-    let lost:any = {
-      fullnameofuser: this.fullname,
-      mobile: this.mobile,
-      email: this.email,
-      trainNumber: this.trainNumber,
-      trainName: this.trainName,
-      coachnum: this.coachnum,
-      seatnum: this.seatnum,
-      itemname: this.itemname,
-      dateoflost: this.dateoflost,
-      description: this.description,
-      proof: this.proof
-    };
+    let lost: FormData = new FormData()
 
-    if (this.LostData && this.LostData._id) {
-     lost._id = this.LostData._id;
+    lost.append("fullnameofuser",this.fullname)
+    lost.append("mobile",this.mobile)
+    lost.append("email",this.email)
+    lost.append("trainNumber",this.trainNumber)
+    lost.append("trainName",this.trainName)
+    lost.append("coachnum",this.coachnum)
+    lost.append("seatnum",this.seatnum)
+    lost.append("itemname",this.itemname)
+    lost.append("dateoflost",this.dateoflost)
+    lost.append("description",this.description)
+    lost.append("proof",this.proof)
+    for(let i=0;i<this.selectedFiles.length;i++){
+      lost.append('images',this.selectedFiles[i])
     }
+    // let lost:any = {
+    //   fullnameofuser: this.fullname,
+    //   mobile: this.mobile,
+    //   email: this.email,
+    //   trainNumber: this.trainNumber,
+    //   trainName: this.trainName,
+    //   coachnum: this.coachnum,
+    //   seatnum: this.seatnum,
+    //   itemname: this.itemname,
+    //   dateoflost: this.dateoflost,
+    //   description: this.description,
+    //   proof: this.proof,
+    // };
+
+    // if (this.LostData && this.LostData._id) {
+    //  lost._id = this.LostData._id;
+    // }
 
 
     if(this.LostData === null){
@@ -116,5 +135,23 @@ export class LostForm implements OnInit {
       )
     }
    
+  }
+
+  //file change 
+  fileChanged(event: any){
+    let files = event.target.files;
+    this.selectedFiles = files;
+    for(let i=0;i<files.length;i++){
+       let reader = new FileReader()
+       reader.readAsDataURL(files[i])
+       reader.onload = (value)=>{
+          this.previewFiles.push(value.target?.result)
+       }
+    }
+  }
+
+  removeImage(index: number): void {
+    this.previewFiles.splice(index, 1);
+    this.selectedFiles.splice(index, 1);
   }
 }
