@@ -1,6 +1,6 @@
 .custom-sidenav {
   width: 220px;
-  background-color: #FFC107; /* Amber */
+  background-color: #1E2A38; /* Amber */
   color: white;
   padding: 1.5rem;
   height: auto;
@@ -36,4 +36,59 @@
   color: white; /* Optional: matches underline */
   font-weight: bold;
 }
+.author-wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
 
+    .sidebar {
+      width: 250px;
+      background-color: #fff;
+      border-right: 1px solid #e5e7eb;
+      padding: 30px 20px;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .sidebar h4 {
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      color: #3b82f6;
+    }
+
+    .sidebar .nav-link {
+      padding: 10px 15px;
+      border-radius: 8px;
+      color: #374151;
+      margin-bottom: 10px;
+      transition: all 0.2s;
+    }
+
+    .sidebar .nav-link.active,
+    .sidebar .nav-link:hover {
+      background-color: #e0f2fe;
+      color: #1d4ed8;
+      font-weight: 500;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 8px 16px;
+    }
+
+    .intro-box {
+      background: linear-gradient(to right, #3b82f6, #6366f1);
+      border-radius: 16px;
+      color: white;
+      padding: 12px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .content-box {
+      background: white;
+      border-radius: 16px;
+      padding: 7px;
+      box-shadow: 0px 0px 5px lightgrey;
+    }
+
+    

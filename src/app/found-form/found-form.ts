@@ -27,6 +27,9 @@ export class FoundForm implements OnInit {
   description: string = '';
   dateoffound: any = '';
 
+  selectedFiles: any = []
+  previewFiles: any = []
+
   constructor(private foundservice: FoundService, private router: Router, public snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
@@ -44,7 +47,7 @@ export class FoundForm implements OnInit {
     }
   }
 
-  handleSubmit() {
+ handleSubmit() {
   if (
     this.fullname === '' || this.mobile === '' ||
     this.email === '' || this.trainNumber === '' ||
@@ -56,25 +59,28 @@ export class FoundForm implements OnInit {
     return;
   }
 
-  let found: any = {
-    fullname: this.fullname,
-    mobile: this.mobile,
-    email: this.email,
-    trainNumber: this.trainNumber,
-    trainName: this.trainName,
-    coachnum: this.coachnum,
-    location: this.location,
-    itemname: this.itemname,
-    dateoffound: this.dateoffound,
-    description: this.description
-  };
+  let found: FormData = new FormData();
 
-  if (this.FoundData && this.FoundData._id) {
-     found._id = this.FoundData._id;
+  // Required fields
+  found.append("fullname", this.fullname);
+  found.append("mobile", this.mobile);
+  found.append("email", this.email);
+  found.append("trainNumber", this.trainNumber);
+  found.append("trainName", this.trainName);
+  found.append("coachnum", this.coachnum);
+  found.append("location", this.location);
+  found.append("itemname", this.itemname);
+  found.append("dateoffound", this.dateoffound);
+  found.append("description", this.description);    
+
+  // Optional image files (append only if available)
+  if (this.selectedFiles && this.selectedFiles.length > 0) {
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      found.append('images', this.selectedFiles[i]);
     }
+  }
 
   
-
   if (this.FoundData === null) {
     this.foundservice.addFoundItem(found).subscribe(
       (response) => {
@@ -99,6 +105,25 @@ export class FoundForm implements OnInit {
     );
   }
 }
+
+
+fileChanged(event: any){
+    let files = event.target.files;
+    this.selectedFiles = files;
+    for(let i=0;i<files.length;i++){
+       let reader = new FileReader()
+       reader.readAsDataURL(files[i])
+       reader.onload = (value)=>{
+          this.previewFiles.push(value.target?.result)
+       }
+    }
+  }
+
+
+removeImage(index: number): void {
+  this.previewFiles.splice(index, 1);
+  this.selectedFiles.splice(index, 1);
+}  
 
 
 }

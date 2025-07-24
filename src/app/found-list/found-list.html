@@ -1,34 +1,25 @@
-<!-- Container for Found Item Reports -->
-<div class="container py-5">
+<!-- Found Item Reports Container -->
+<div class="container py-3" style="background-color: #f0f4f8; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
 
-  <!-- Header Row: Back Button + Page Title -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <button class="btn btn-outline-primary fw-semibold px-3 py-2" (click)="goToAdminPanel()">
-      ← Back to Admin Panel
-    </button>
-    <h2 class="m-0 fw-bold" style="color: #1A2B49;">
+  <!-- Section Title -->
+  <div class="mb-3">
+    <h4 class="fw-semibold mb-1 text-dark" style="margin-bottom: 0;">
       🧳 Submitted Found Item Reports
-    </h2>
+    </h4>
+    <hr style="width: 50px; border-top: 2px solid #1A2B49; margin-top: 0.2rem; margin-bottom: 0.5rem;" />
   </div>
 
-  <!-- Filter & Search Bar -->
-  <div class="row g-3 mb-4 align-items-end">
-    <!-- Search Bar -->
+  <!-- Filter Row -->
+  <div class="row g-3 mb-3">
     <div class="col-md-4">
-      <input [(ngModel)]="searchInput" type="text" class="form-control" placeholder="🔍 Search by item name">
+      <input [(ngModel)]="searchInput" type="text" class="form-control" placeholder="Search by Item Name">
     </div>
-
-    <!-- Train Number Filter -->
     <div class="col-md-2">
       <input [(ngModel)]="trainNumberFilter" type="text" class="form-control" placeholder="Train Number">
     </div>
-
-    <!-- Train Name Filter -->
     <div class="col-md-3">
       <input [(ngModel)]="trainNameFilter" type="text" class="form-control" placeholder="Train Name">
     </div>
-
-    <!-- Date Found Filter -->
     <div class="col-md-3">
       <input [(ngModel)]="dateFilter" type="date" class="form-control">
     </div>
@@ -36,24 +27,24 @@
 
   <!-- Found Reports Table -->
   <div class="table-responsive">
-    <table class="table table-bordered align-middle shadow-sm">
+    <table class="table table-bordered align-middle shadow-sm bg-white">
       <thead style="background-color: #1A2B49;" class="text-white text-center">
         <tr>
           <th>#</th>
-          <th>Finder's Name</th>
+          <th>Finder</th>
           <th>Mobile</th>
           <th>Email</th>
           <th>Train No. & Name</th>
           <th>Coach / Location</th>
-          <th>Item Name</th>
-          <th>Date Found</th>
+          <th>Item</th>
+          <th>Date</th>
           <th>Description</th>
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody *ngIf="foundListLoader === false" class="text-center">
+      <tbody *ngIf="!foundListLoader" class="text-center">
         <tr *ngFor="let found of foundReports 
-            | foundReportsFilter : searchInput : trainNumberFilter : trainNameFilter : dateFilter; let i = index">
+              | foundReportsFilter : searchInput : trainNumberFilter : trainNameFilter : dateFilter; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ found.fullname }}</td>
           <td>{{ found.mobile }}</td>
@@ -62,16 +53,12 @@
           <td>{{ found.coachnum || '-' }} / {{ found.location || '-' }}</td>
           <td>{{ found.itemname }}</td>
           <td>{{ found.dateoffound | date:'mediumDate' }}</td>
-          <td class="text-start">
-            <span class="text-muted small">{{ found.description }}</span>
-          </td>
-          <td class="text-center">
-            <div class="d-flex justify-content-center align-items-center gap-2">
-              <!-- Edit Button -->
+          <td class="text-start small text-muted">{{ found.description }}</td>
+          <td>
+            <div class="d-flex justify-content-center gap-2">
               <button class="btn btn-sm btn-outline-primary" (click)="onEdit(found)" title="Edit">
                 <i class="bi bi-pencil-square"></i>
               </button>
-              <!-- Delete Button -->
               <button class="btn btn-sm btn-outline-danger" (click)="onDelete(found)" title="Delete">
                 <i class="bi bi-trash"></i>
               </button>
@@ -80,10 +67,12 @@
         </tr>
       </tbody>
 
-      <!-- Loader while fetching -->
-      <tbody *ngIf="foundListLoader === true">
+      <!-- Loader Row -->
+      <tbody *ngIf="foundListLoader">
         <tr>
-          <td colspan="10" class="text-center"><app-loader></app-loader></td>
+          <td colspan="10" class="text-center py-3">
+            <app-loader></app-loader>
+          </td>
         </tr>
       </tbody>
     </table>

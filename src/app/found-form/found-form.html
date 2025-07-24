@@ -19,19 +19,22 @@
 
             <!-- Finder Name -->
             <div class="form-floating mb-3">
-              <input [(ngModel)]="fullname" name="fullname" type="text" class="form-control" id="finderName" placeholder="Your Name" required>
+              <input [(ngModel)]="fullname" name="fullname" type="text" class="form-control" id="finderName"
+                placeholder="Your Name" required>
               <label for="finderName">Your Name</label>
             </div>
 
             <!-- Mobile Number -->
             <div class="form-floating mb-3">
-              <input [(ngModel)]="mobile" name="mobile" type="tel" class="form-control" id="finderMobile" placeholder="Mobile Number" maxlength="10" required>
+              <input [(ngModel)]="mobile" name="mobile" type="tel" class="form-control" id="finderMobile"
+                placeholder="Mobile Number" maxlength="10" required>
               <label for="finderMobile">Mobile Number</label>
             </div>
 
             <!-- Email -->
             <div class="form-floating mb-3">
-              <input [(ngModel)]="email" name="email" type="email" class="form-control" id="finderEmail" placeholder="Email Address" required>
+              <input [(ngModel)]="email" name="email" type="email" class="form-control" id="finderEmail"
+                placeholder="Email Address" required>
               <label for="finderEmail">Email Address</label>
             </div>
 
@@ -39,13 +42,15 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input [(ngModel)]="trainNumber" name="trainNumber" type="text" class="form-control" id="trainNumber" placeholder="Train Number" required>
+                  <input [(ngModel)]="trainNumber" name="trainNumber" type="text" class="form-control" id="trainNumber"
+                    placeholder="Train Number" required>
                   <label for="trainNumber">Train Number</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input [(ngModel)]="trainName" name="trainName" type="text" class="form-control" id="trainName" placeholder="Train Name" required>
+                  <input [(ngModel)]="trainName" name="trainName" type="text" class="form-control" id="trainName"
+                    placeholder="Train Name" required>
                   <label for="trainName">Train Name</label>
                 </div>
               </div>
@@ -55,13 +60,15 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input [(ngModel)]="coachnum" name="coachnum" type="text" class="form-control" id="coach" placeholder="Coach">
+                  <input [(ngModel)]="coachnum" name="coachnum" type="text" class="form-control" id="coach"
+                    placeholder="Coach">
                   <label for="coach">Coach (if known)</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input [(ngModel)]="location" name="location" type="text" class="form-control" id="locationFound" placeholder="Where was it found?" required>
+                  <input [(ngModel)]="location" name="location" type="text" class="form-control" id="locationFound"
+                    placeholder="Where was it found?" required>
                   <label for="locationFound">Location Found (e.g., berth, restroom)</label>
                 </div>
               </div>
@@ -69,29 +76,50 @@
 
             <!-- Item Name -->
             <div class="form-floating mb-3">
-              <input [(ngModel)]="itemname" name="itemname" type="text" class="form-control" id="foundItemName" placeholder="Item Name" required>
+              <input [(ngModel)]="itemname" name="itemname" type="text" class="form-control" id="foundItemName"
+                placeholder="Item Name" required>
               <label for="foundItemName">Item Name</label>
             </div>
 
             <!-- Description -->
             <div class="form-floating mb-3">
-              <textarea [(ngModel)]="description" name="description" class="form-control" id="foundDescription" style="height: 100px;" placeholder="Item Description"></textarea>
+              <textarea [(ngModel)]="description" name="description" class="form-control" id="foundDescription"
+                style="height: 100px;" placeholder="Item Description"></textarea>
               <label for="foundDescription">Brief Description of the Item</label>
             </div>
 
             <!-- Date Found -->
             <div class="form-floating mb-3">
-              <input [(ngModel)]="dateoffound" name="dateoffound" type="date" class="form-control" id="foundDate" required>
+              <input [(ngModel)]="dateoffound" name="dateoffound" type="date" class="form-control" id="foundDate"
+                required>
               <label for="foundDate">Date You Found the Item</label>
+            </div>
+            
+            <div class="mb-4">
+              <label for="uploadImage" class="form-label fw-semibold">📎 Upload Image (Optional)</label>
+              <input class="form-control" (change)="fileChanged($event)" type="file" id="uploadImage" accept="image/*"
+                multiple>
+              <small class="form-text text-muted">Upload a photo of the item, receipt, or any related
+                document.</small>
+            </div>
+            <!-- preview uploaded images here -->
+            <div *ngIf="previewFiles.length > 0" class="preview-container">
+              <h3 class="preview-title">Uploaded Images</h3>
+              <div class="image-grid">
+                <div *ngFor="let image of previewFiles; let i = index" class="image-wrapper">
+                  <img [src]="image" alt="Preview Image" />
+                  <button class="remove-button" (click)="removeImage(i)">✕</button>
+                </div>
+              </div>
             </div>
 
             <!-- Submit -->
-                        <div class="d-grid mt-4">
-                            <button type="button" class="btn btn-lg text-white" (click)="handleSubmit()"
-                                style="background-color: #165BAA;">
-                                Submit
-                            </button>
-                        </div>
+            <div class="d-grid mt-4">
+              <button type="button" class="btn btn-lg text-white" (click)="handleSubmit()"
+                style="background-color: #165BAA;">
+                Submit
+              </button>
+            </div>
 
           </form>
         </div>

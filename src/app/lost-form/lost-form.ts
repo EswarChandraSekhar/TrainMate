@@ -26,6 +26,7 @@ export class LostForm implements OnInit {
   description: string = '';
   dateoflost: any = '';
   proof: any = '';
+
   selectedFiles: any = []
   previewFiles: any = []
 
@@ -137,10 +138,11 @@ export class LostForm implements OnInit {
    
   }
 
-  //file change 
+  
   fileChanged(event: any){
     let files = event.target.files;
     this.selectedFiles = files;
+
     for(let i=0;i<files.length;i++){
        let reader = new FileReader()
        reader.readAsDataURL(files[i])
@@ -150,8 +152,9 @@ export class LostForm implements OnInit {
     }
   }
 
-  removeImage(index: number): void {
-    this.previewFiles.splice(index, 1);
-    this.selectedFiles.splice(index, 1);
-  }
+removeImage(index: number): void {
+  this.previewFiles.splice(index, 1);
+  this.selectedFiles.splice(index, 1);
+}
+
 }

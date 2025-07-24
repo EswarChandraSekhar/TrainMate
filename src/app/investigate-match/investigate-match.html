@@ -5,30 +5,104 @@
     <div class="item-table">
       <h3>Lost Item Details</h3>
       <table>
-        <tr><td><strong>Full Name</strong></td><td>{{ lostItem?.fullnameofuser }}</td></tr>
-        <tr><td><strong>Mobile</strong></td><td>{{ lostItem?.mobile }}</td></tr>
-        <tr><td><strong>Email</strong></td><td>{{ lostItem?.email }}</td></tr>
-        <tr><td><strong>Train No. & Name</strong></td><td>{{ lostItem?.trainNumber }} - {{ lostItem?.trainName }}</td></tr>
-        <tr><td><strong>Coach / Seat</strong></td><td>{{ lostItem?.coachnum }} / {{ lostItem?.seatnum }}</td></tr>
-        <tr><td><strong>Item Name</strong></td><td>{{ lostItem?.itemname }}</td></tr>
-        <tr><td><strong>Date Lost</strong></td><td>{{ lostItem?.dateoflost }}</td></tr>
-        <tr><td><strong>Description</strong></td><td>{{ lostItem?.description }}</td></tr>
-        <tr><td><strong>Proof</strong></td><td>{{ lostItem?.proof }}</td></tr>
+        <tr>
+          <td><strong>Full Name</strong></td>
+          <td>{{ lostItem?.fullnameofuser }}</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile</strong></td>
+          <td>{{ lostItem?.mobile }}</td>
+        </tr>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td>{{ lostItem?.email }}</td>
+        </tr>
+        <tr>
+          <td><strong>Train No. & Name</strong></td>
+          <td>{{ lostItem?.trainNumber }} - {{ lostItem?.trainName }}</td>
+        </tr>
+        <tr>
+          <td><strong>Coach / Seat</strong></td>
+          <td>{{ lostItem?.coachnum }} / {{ lostItem?.seatnum }}</td>
+        </tr>
+        <tr>
+          <td><strong>Item Name</strong></td>
+          <td>{{ lostItem?.itemname }}</td>
+        </tr>
+        <tr>
+          <td><strong>Date Lost</strong></td>
+          <td>{{ lostItem?.dateoflost }}</td>
+        </tr>
+        <tr>
+          <td><strong>Description</strong></td>
+          <td>{{ lostItem?.description }}</td>
+        </tr>
+        <tr>
+          <td><strong>Proof</strong></td>
+          <td>{{ lostItem?.proof }}</td>
+        </tr>
+
+        <!-- Lost Item Images -->
+        <tr *ngIf="lostItem?.images?.length > 0">
+          <td><strong>Images</strong></td>
+          <td>
+            <div class="image-grid">
+              <img *ngFor="let img of lostItem.images" [src]="img" alt="Lost Item Image" class="item-image"
+                style="max-width: 100px; max-height: 100px; margin-right: 10px;" (click)="onImage(img)" />
+            </div>
+          </td>
+        </tr>
       </table>
     </div>
+
+
 
     <!-- Found Item Table -->
     <div class="item-table">
       <h3>Found Item Details</h3>
       <table>
-        <tr><td><strong>Finder's Name</strong></td><td>{{ foundItem?.fullname }}</td></tr>
-        <tr><td><strong>Mobile</strong></td><td>{{ foundItem?.mobile }}</td></tr>
-        <tr><td><strong>Email</strong></td><td>{{ foundItem?.email }}</td></tr>
-        <tr><td><strong>Train No. & Name</strong></td><td>{{ foundItem?.trainNumber }} - {{ foundItem?.trainName }}</td></tr>
-        <tr><td><strong>Coach / Location</strong></td><td>{{ foundItem?.coachnum }} / {{ foundItem?.location }}</td></tr>
-        <tr><td><strong>Item Name</strong></td><td>{{ foundItem?.itemname }}</td></tr>
-        <tr><td><strong>Date Found</strong></td><td>{{ foundItem?.dateoffound }}</td></tr>
-        <tr><td><strong>Description</strong></td><td>{{ foundItem?.description }}</td></tr>
+        <tr>
+          <td><strong>Finder's Name</strong></td>
+          <td>{{ foundItem?.fullname }}</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile</strong></td>
+          <td>{{ foundItem?.mobile }}</td>
+        </tr>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td>{{ foundItem?.email }}</td>
+        </tr>
+        <tr>
+          <td><strong>Train No. & Name</strong></td>
+          <td>{{ foundItem?.trainNumber }} - {{ foundItem?.trainName }}</td>
+        </tr>
+        <tr>
+          <td><strong>Coach / Location</strong></td>
+          <td>{{ foundItem?.coachnum }} / {{ foundItem?.location }}</td>
+        </tr>
+        <tr>
+          <td><strong>Item Name</strong></td>
+          <td>{{ foundItem?.itemname }}</td>
+        </tr>
+        <tr>
+          <td><strong>Date Found</strong></td>
+          <td>{{ foundItem?.dateoffound }}</td>
+        </tr>
+        <tr>
+          <td><strong>Description</strong></td>
+          <td>{{ foundItem?.description }}</td>
+        </tr>
+        <tr *ngIf="foundItem?.images?.length > 0">
+          <td><strong>Images</strong></td>
+          <td>
+            <div class="image-grid">
+              <img *ngFor="let img of foundItem.images" [src]="img" alt="Found Item Image" class="item-image"
+                style="max-width: 100px; max-height: 100px; margin-right: 10px;" (click)="onImage(img)" />
+            </div>
+          </td>
+        </tr>
+
       </table>
     </div>
   </div>

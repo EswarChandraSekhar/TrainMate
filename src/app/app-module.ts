@@ -30,6 +30,8 @@ import { User } from './user/user';
 import { ReactForm } from './react-form/react-form';
 import { ReactionList } from './reaction-list/reaction-list';
 import { InvestigateMatch } from './investigate-match/investigate-match';
+import { SmartMatch } from './smart-match/smart-match';
+import { ImgeDialog } from './imge-dialog/imge-dialog';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { InvestigateMatch } from './investigate-match/investigate-match';
     User,
     ReactForm,
     ReactionList,
-    InvestigateMatch
+    InvestigateMatch,
+    SmartMatch,
+    ImgeDialog
   ],
   imports: [
     BrowserModule,

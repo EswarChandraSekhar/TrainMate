@@ -19,6 +19,7 @@ import { User } from './user/user';
 import { ReactionList } from './reaction-list/reaction-list';
 import { ReactForm } from './react-form/react-form';
 import { InvestigateMatch } from './investigate-match/investigate-match';
+import { SmartMatch } from './smart-match/smart-match';
 const routes: Routes = [
   {
     path: 'home',
@@ -37,7 +38,36 @@ const routes: Routes = [
   {
     path: 'admin-panel',
     component: AdminPanel,
-    canActivate: [AdminAuthGuard]
+    canActivate: [AdminAuthGuard],
+    children: [
+      {
+        path: 'reactions-list',
+        component: ReactionList,
+        canActivate: [AdminAuthGuard]
+
+      },
+      {
+        path: 'lost-list',
+        component: LostList,
+        canActivate: [AdminAuthGuard]
+      },
+      {
+        path: 'found-list',
+        component: FoundList,
+        canActivate: [AdminAuthGuard]
+      },
+      {
+        path: 'smart-match',
+        component: SmartMatch,
+        canActivate: [AdminAuthGuard]
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        component: SmartMatch,
+        canActivate: [AdminAuthGuard]
+      }
+    ]
   },
   {
     path: 'user',
@@ -56,21 +86,6 @@ const routes: Routes = [
     path: 'react-form',
     component: ReactForm,
     canActivate: [AuthGuard]
-  },
-  {
-  path: 'reactions-list',
-  component: ReactionList,
-  canActivate: [AdminAuthGuard]
-  },
-  {
-    path: 'lost-list',
-    component: LostList, 
-    canActivate: [AdminAuthGuard]
-  },
-  {
-    path: 'found-list',
-    component: FoundList,
-    canActivate: [AdminAuthGuard]
   },
   {
     path: 'submission-progress',
