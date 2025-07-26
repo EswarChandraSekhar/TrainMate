@@ -16,11 +16,6 @@ export class InvestigateMatch implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private matDialog: MatDialog) {}
 ngOnInit(): void {
-   let X = this.findElement(this.arr, 66)
-   if (X === false){
-    console.log('NOt existed')
-   }
-   else
  
   setTimeout(() => {
     const state = history.state;

@@ -1,49 +1,44 @@
-<div class="d-flex" style="min-height: 100vh;">
-  <!-- Sidebar -->
-  <nav class="custom-sidenav">
-    <h4 class="mb-4">🛠 Admin Panel</h4>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-3">
-        <a [routerLink]="['/admin-panel/smart-match']" routerLinkActive="active" class="nav-link nav-link-custom" 
-        [ngClass]="{ 'active' : activeTab === 'smart-match'}">
-          🧾 Smart Match
-        </a>
-      </li>
-      <li class="nav-item mb-3">
-        <a [routerLink]="['/admin-panel/lost-list']" routerLinkActive="active" class="nav-link nav-link-custom"
-        [ngClass]="{ 'active' : activeTab === 'lost-list'}">
-          🧾 Lost Item List
-        </a>
-      </li>
-      <li class="nav-item mb-3">
-        <a [routerLink]="['/admin-panel/found-list']" routerLinkActive="active" class="nav-link nav-link-custom"
-        [ngClass]="{ 'active' : activeTab === 'found-list'}">
-          🧾 Found Item List
-        </a>
-      </li>
-      <li class="nav-item mb-3">
-        <a [routerLink]="['/admin-panel/reactions-list']" routerLinkActive="active" class="nav-link nav-link-custom"
-        [ngClass]="{ 'active' : activeTab === 'reactions-list'}">
-          🧾 Reaction List
-        </a>
-      </li>
-    </ul>
-  </nav>
+<div class="author-wrapper">
+  <!-- Sidebar Navigation -->
+  <div class="sidebar">
+    <h4>🛠 Admin Panel</h4>
+    <a routerLink="/admin-panel/smart-match"
+       (click)="handleActiveTab('smart-match')"
+       class="nav-link"
+       [ngClass]="{ 'active' : activeTab === 'smart-match' }">
+      🧾 Smart Match
+    </a>
+    <a routerLink="/admin-panel/lost-list"
+       (click)="handleActiveTab('lost-list')"
+       class="nav-link"
+       [ngClass]="{ 'active' : activeTab === 'lost-list' }">
+      🧾 Lost Item List
+    </a>
+    <a routerLink="/admin-panel/found-list"
+       (click)="handleActiveTab('found-list')"
+       class="nav-link"
+       [ngClass]="{ 'active' : activeTab === 'found-list' }">
+      🧾 Found Item List
+    </a>
+    <a routerLink="/admin-panel/reactions-list"
+       (click)="handleActiveTab('reactions-list')"
+       class="nav-link"
+       [ngClass]="{ 'active' : activeTab === 'reactions-list' }">
+      🧾 Reaction List
+    </a>
+  </div>
 
-  <!-- Main Dashboard Content -->
-  <div class="flex-grow-1" style="background-color: #f8f9fa;">
-    <div class="container py-4">
-      <!-- Header -->
-      <div class="text-center mb-4">
-        <h2 class="fw-bold text-primary">🚉 TrainMate Admin Dashboard</h2>
-        <p class="text-muted">Monitor and manage Lost & Found activity across Indian Railways</p>
-      </div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Intro Section -->
+    <div class="intro-box text-center mb-3">
+      <h3 class="fw-bold">🚉 TrainMate Admin Dashboard</h3>
+      <p class="mb-0">Monitor and manage Lost & Found activity across Indian Railways.</p>
+    </div>
 
-      <!-- ✅ Place router-outlet here -->
-      <div class="content-box">
-        <router-outlet></router-outlet>
-      </div>
-
+    <!-- Dynamic Routed Content -->
+    <div class="content-box">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

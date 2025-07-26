@@ -64,8 +64,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: SmartMatch,
-        canActivate: [AdminAuthGuard]
+        redirectTo: 'smart-match'
       }
     ]
   },

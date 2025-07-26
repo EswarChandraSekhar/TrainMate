@@ -12,4 +12,6 @@ export class AdminPanel  {
   handleActiveTab(value: string){
     this.activeTab = value;
   }
+
+  
 }
