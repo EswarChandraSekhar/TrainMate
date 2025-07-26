@@ -9,34 +9,33 @@ import { UserProfileService } from '../user-profile.service';
 })
 export class User {
   user: any = null;
-    lostItems: any[] = [];
-    foundItems: any[] = [];
-    loading: boolean = true;
-    error: string = '';
-    viewMode: 'lost' | 'found' = 'lost';
-  
-    constructor(private userProfileService: UserProfileService) {}
-  
-   ngOnInit(): void {
-  this.loadUserProfileData();
-}
+  lostItems: any[] = [];
+  foundItems: any[] = [];
+  loading: boolean = true;
+  error: string = '';
+  viewMode: 'lost' | 'found' = 'lost';
 
-loadUserProfileData(): void {
-  this.loading = true;
+  constructor(private userProfileService: UserProfileService) { }
 
-  this.userProfileService.getUserData().subscribe(
-    (response) => {
-      this.user = response.user;
-      this.lostItems = response.lostItems;
-      this.foundItems = response.foundItems;
-      this.loading = false;
-    },
-    (error) => {
-      this.error = 'Failed to load user profile data.';
-      this.loading = false;
-    }
-  );
-}
+  ngOnInit(): void {
+    this.loadUserProfileData();
+  }
+
+  loadUserProfileData(): void {
+    this.loading = true;
+    this.userProfileService.getUserData().subscribe(
+      (response) => {
+        this.user = response.user;
+        this.lostItems = response.lostItems;
+        this.foundItems = response.foundItems;
+        this.loading = false;
+      },
+      (error) => {
+        this.error = 'Failed to load user profile data.';
+        this.loading = false;
+      }
+    );
+  }
 
 
 }

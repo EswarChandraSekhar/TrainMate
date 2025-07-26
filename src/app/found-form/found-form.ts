@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FoundService } from '../found-service';
+import { AuthService } from '../auth-service';
 
 @Component({
   selector: 'app-found-form',
@@ -30,9 +31,16 @@ export class FoundForm implements OnInit {
   selectedFiles: any = []
   previewFiles: any = []
 
-  constructor(private foundservice: FoundService, private router: Router, public snackbar: MatSnackBar) {}
+  constructor(private foundservice: FoundService, private router: Router, public snackbar: MatSnackBar,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.authService.loggedInUserData$.subscribe(data=>{
+        if(data !==null){
+          this.email = data.email
+        }
+    })
     if(this.FoundData !== null){
       this.fullname = this.FoundData.fullname;
       this.mobile = this.FoundData.mobile;

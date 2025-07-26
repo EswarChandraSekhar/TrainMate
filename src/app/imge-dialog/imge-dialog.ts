@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrl: './imge-dialog.css'
 })
 export class ImgeDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any)
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { url: string, width: number, height: number })
    {}
 
 }
