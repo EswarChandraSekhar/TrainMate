@@ -49,24 +49,21 @@ export class SmartMatch {
       this.isLoading = true;
   
       try {
-        const [lostItems, foundItems, matchResponse] = await Promise.all([
-          lastValueFrom(this.lostService.getLostItemList()),
-          lastValueFrom(this.foundService.getFoundItemList()),
-          lastValueFrom(this.matchService.getMatchList())
+        const [matchResponse,overviewResonse] = await Promise.all([
+          lastValueFrom(this.matchService.getMatchList()),
+          lastValueFrom(this.matchService.getMatchOverview())
         ]);
-  
-        console.log('📦 Lost Items:', lostItems);
-        console.log('🔍 Found Items:', foundItems);
         console.log('🔗 Match Response:', matchResponse);
+
   
-        this.lostCount = lostItems.length;
-        this.foundCount = foundItems.length;
+         this.lostCount = overviewResonse.data.lostItemCount
+         this.foundCount = overviewResonse.data.foundItemCount
   
         this.matches = matchResponse.matches || [];
   
         this.smartMatchCount = this.matches.length;
-        this.completedMatchCount = this.matches.filter(m => m.status === 'completed').length;
-        this.rejectedMatchCount = this.matches.filter(m => m.status === 'rejected').length;
+        this.completedMatchCount = overviewResonse.data.confirmedMatchCount
+        this.rejectedMatchCount = overviewResonse.data.rejectedMatchCount
   
         console.log('✅ Count Summary:', {
           lostCount: this.lostCount,

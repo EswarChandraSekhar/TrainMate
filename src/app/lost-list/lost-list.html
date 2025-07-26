@@ -51,19 +51,9 @@
             </div>
           </td>
           <td>
-            <select class="form-select form-select-sm fw-semibold text-center"
-                    [ngClass]="{
-                      'bg-primary text-white': lost.status === 'Pending',
-                      'bg-warning text-dark': lost.status === 'In Progress',
-                      'bg-success text-white': lost.status === 'Matched',
-                      'bg-danger text-white': lost.status === 'Not Matched'
-                    }"
-                    style="min-width: 140px;">
-              <option value="Pending">Pending</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Matched">Matched</option>
-              <option value="Not Matched">Not Matched</option>
-            </select>
+            <span class="badge bg-success" *ngIf="lost.status === 'found'">Found</span>
+            <span class="badge bg-danger" *ngIf="lost.status === 'not-found'">Not Found</span>
+            <span class="badge bg-warning text-dark" *ngIf="lost.status === 'in-progress'">In Progress</span>
           </td>
         </tr>
       </tbody>

@@ -13,6 +13,12 @@ export class MatchService {
   getMatchList(): Observable<any> {
     return this.http.get<any>(this.url + '/api/matches/generate');
   }
+  getMatchOverview(): Observable<any>{
+    return this.http.get<any>(this.url + "/api/matches/overview")
+  }
+  confirmMatch(lostId:any,foundId: any):Observable<any>{
+    return this.http.post<any>(this.url+"/api/matches/confirm-match",{lostId,foundId})
+  }
 
   
 }

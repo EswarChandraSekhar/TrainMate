@@ -1,9 +1,8 @@
-<div class="container py-5" *ngIf="approvedReactions && approvedReactions.length; else noReactions">
+<div class="container py-5" *ngIf="reactionsLoader === false && approvedReactions.length > 0">
   <h2 class="text-center text-primary mb-2 fw-bold display-6">🌟 Reactions from Our Users</h2>
   <p class="text-center text-secondary mb-4 fs-6">
     Here’s what kind souls and happy owners have to say about <strong>TrainMate</strong>
   </p>
-
   <div class="row g-4">
     <div class="col-md-6 col-lg-4" *ngFor="let reaction of approvedReactions">
       <div
@@ -56,12 +55,15 @@
     </a>
   </div>
 </div>
-
-<ng-template #noReactions>
-  <div class="text-center py-5">
-    <h4 class="text-muted">No reactions yet. Be the first to inspire!</h4>
-    <a routerLink="/react-form" class="btn btn-outline-primary mt-3 px-4 py-2 rounded-pill">
-      ✍️ Share Your Experience
-    </a>
-  </div>
-</ng-template>
+<!-- no reactions -->
+<div *ngIf="reactionsLoader=== false && approvedReactions.length === 0" class="text-center py-5">
+  <h4 class="text-muted">No reactions yet. Be the first to inspire!</h4>
+  <a routerLink="/react-form" class="btn btn-outline-primary mt-3 px-4 py-2 rounded-pill">
+    ✍️ Share Your Experience
+  </a>
+</div>
+<!-- loader -->
+<div *ngIf="reactionsLoader" class="text-center my-5">
+  <div class="spinner-border text-primary" role="status"></div>
+  <p>Loading Reactions...</p>
+</div>

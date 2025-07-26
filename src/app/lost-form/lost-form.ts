@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { LostService } from '../lost-service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../auth-service';
 
 
 @Component({
@@ -33,9 +34,16 @@ export class LostForm implements OnInit {
 
   lostreports: any[] = [];
 
-  constructor(private lostservice: LostService, private router: Router, public snackbar: MatSnackBar) {}
+  constructor(private lostservice: LostService, private router: Router, public snackbar: MatSnackBar,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.authService.loggedInUserData$.subscribe(data=>{
+       if(data!==null){
+        this.email = data.email;
+       }
+    })
     if(this.LostData !== null){
       this.fullname = this.LostData.fullnameofuser;
       this.mobile = this.LostData.mobile;

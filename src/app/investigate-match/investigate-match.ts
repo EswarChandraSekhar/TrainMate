@@ -2,6 +2,7 @@ import { Component,  OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImgeDialog } from '../imge-dialog/imge-dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { MatchService } from '../match-service';
 
 @Component({
   selector: 'app-investigate-match',
@@ -14,7 +15,8 @@ export class InvestigateMatch implements OnInit {
   foundItem: any;
   arr: any[] = [5, 15, 11, 13, 19, 55, 22]
 
-  constructor(private route: ActivatedRoute, private router: Router, private matDialog: MatDialog) {}
+  constructor(private route: ActivatedRoute, private router: Router, private matDialog: MatDialog,private matchService: MatchService
+  ) {}
 ngOnInit(): void {
  
   setTimeout(() => {
@@ -49,21 +51,49 @@ ngOnInit(): void {
 
 
   confirmMatch(): void {
-    alert('Match confirmed. Notifications will be sent.');
-    this.router.navigate(['/admin-panel']);
+    this.matchService.confirmMatch(this.lostItem._id,this.foundItem._id).subscribe(
+      res=>{
+        this.router.navigate(['/admin-panel']);
+      },
+      err=>{
+        alert('Something went wrong')
+      }
+    )
   }
 
   goBack(): void {
     this.router.navigate(['/admin-panel']);
   }
 
-   onImage(img: string){
-    console.log(img)
-   this.matDialog.open(ImgeDialog,{
-      data: img,
-      width: 'auto'
+  onImage(imgUrl: string) {
+    const image = new Image();
+  image.src = imgUrl;
+
+  image.onload = () => {
+    let width = image.naturalWidth;
+    let height = image.naturalHeight;
+
+    // Cap to 800px max, maintaining aspect ratio
+    if (width > 800 || height > 800) {
+      const ratio = Math.min(800 / width, 800 / height);
+      width = width * ratio;
+      height = height * ratio;
+    }
+
+    this.matDialog.open(ImgeDialog, {
+      data: {
+        url: imgUrl,
+        width,
+        height
+      },
+      panelClass: 'image-dialog-panel',
+      // remove fixed width and height to allow dynamic sizing
+      autoFocus: false,
+      maxWidth: 'none',
+      maxHeight: 'none'
     });
-}
+  };
+  }
 
 findElement(arr:any[], element: any){
   console.log(arr)
