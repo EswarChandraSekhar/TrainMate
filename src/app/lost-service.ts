@@ -23,10 +23,11 @@ export class LostService {
   deleteLostItem(lost: any): Observable<any> {
     return this.http.delete<any>(this.url + '/api/lost-items/' + lost._id);
   }
+ 
+  updateLostItem(lost: FormData): Observable<any> {
+    return this.http.post<any>(this.url+'/api/lost-items/update', lost);
+  }
 
- updateLostItem(lost: any): Observable<any> {
-  return this.http.put<any>(this.url + '/api/lost-items/' + lost._id, lost);
-}
 
 
 

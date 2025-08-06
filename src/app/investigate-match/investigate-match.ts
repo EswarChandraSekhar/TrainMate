@@ -26,12 +26,6 @@ ngOnInit(): void {
       this.lostItem = state.lostItem;
       this.foundItem = state.foundItem;
 
-      console.log('Lost Item:', this.lostItem);
-      console.log('Found Item:', this.foundItem);
-
-      console.log('Images array:', this.lostItem.images);
-      console.log('Type of images:', typeof this.lostItem.images);
-
       // Handle stringified images array if needed
       if (typeof this.lostItem.images === 'string') {
         try {

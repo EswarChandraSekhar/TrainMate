@@ -18,9 +18,13 @@ export class FoundList implements OnInit {
   foundListLoader: boolean = true;
 
   searchInput: string = '';
- trainNumberFilter: string = '';
- trainNameFilter: string = '';
- dateFilter: string = '';
+  trainNumberFilter: string = '';
+  trainNameFilter: string = '';
+  dateFilter: string = '';
+
+  lostItem: any = null;
+  manualInvestigationMode: boolean = false;
+
 
 
   constructor(private foundservice: FoundService, private snackBar: MatSnackBar, private matDialog: MatDialog, private router: Router) {}
@@ -28,9 +32,19 @@ export class FoundList implements OnInit {
     this.router.navigate(['/admin-panel']);
   }
 
-  ngOnInit(): void {
-    this.loadfounditems();
+ ngOnInit(): void {
+   const state = history.state;
+  this.lostItem = state?.lost;
+
+  if (this.lostItem) {
+    this.manualInvestigationMode = this.lostItem.status === 'in-progress';
+  } else {
+    console.log('No lostItem in history.state');
   }
+
+  this.loadfounditems();
+}
+
 
   loadfounditems():void{
     this.foundListLoader = true;
@@ -82,12 +96,26 @@ onEdit(found: any) {
       this.loadfounditems(); 
     }
   });
-
-  
  
-
-
 }
+
+mapToConfirmation(found: any): void {
+  if (this.lostItem?.status === 'in-progress') {
+    this.router.navigate(['/investigate-match'], {
+      state: {
+        lostItem: this.lostItem,
+        foundItem: found
+      }
+    });
+  } else {
+    console.log('Mapping only allowed when lost item is in-progress.');
+  }
+}
+
+
+
+
+
 
 
 }

@@ -83,6 +83,13 @@ onEdit(lost: any) {
   });
 }
 
+investigateItem(lost: any): void {
+  this.router.navigate(['/admin-panel/found-list'], {
+    state: { lost }
+  });
+}
+
+
 
 }
 

@@ -42,7 +42,7 @@ export class LostForm implements OnInit {
     this.authService.loggedInUserData$.subscribe(data=>{
        if(data!==null){
         this.email = data.email;
-       }
+       };
     })
     if(this.LostData !== null){
       this.fullname = this.LostData.fullnameofuser;
@@ -132,6 +132,9 @@ export class LostForm implements OnInit {
       )   
     }
     else{
+      if (this.LostData && this.LostData._id) {
+            lost.append('_id', this.LostData._id);
+       }
 
       this.lostservice.updateLostItem(lost).subscribe(
         (response)=>{

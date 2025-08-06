@@ -25,8 +25,8 @@ export class FoundService {
     return this.http.delete<any>(this.url + '/api/found-items/' + found._id);
   }
 
-  // PUT (update) a found item by _id
-  updateFoundItem(found: any): Observable<any> {
-    return this.http.put<any>(this.url + '/api/found-items/' + found._id, found);
+  // Post (update) a found item by _id
+  updateFoundItem(found: FormData): Observable<any> {
+    return this.http.post<any>(this.url + '/api/found-items/update', found);
   }
 }

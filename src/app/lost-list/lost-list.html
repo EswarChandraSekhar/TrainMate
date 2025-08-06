@@ -26,6 +26,7 @@
           <th>Proof</th>
           <th>Actions</th>
           <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody *ngIf="LostListLoader === false" class="text-center">
@@ -55,6 +56,11 @@
             <span class="badge bg-danger" *ngIf="lost.status === 'not-found'">Not Found</span>
             <span class="badge bg-warning text-dark" *ngIf="lost.status === 'in-progress'">In Progress</span>
           </td>
+           <td>
+          <button *ngIf="lost.status === 'in-progress'" (click)="investigateItem(lost)">
+          Investigate
+          </button>
+        </td>
         </tr>
       </tbody>
 

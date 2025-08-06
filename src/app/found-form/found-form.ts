@@ -38,9 +38,9 @@ export class FoundForm implements OnInit {
   ngOnInit(): void {
     this.authService.loggedInUserData$.subscribe(data=>{
         if(data !==null){
-          this.email = data.email
+          this.email = data.email;
         }
-    })
+    });
     if(this.FoundData !== null){
       this.fullname = this.FoundData.fullname;
       this.mobile = this.FoundData.mobile;
@@ -99,6 +99,10 @@ export class FoundForm implements OnInit {
       }
     );
   } else {
+      if(this.FoundData && this.FoundData._id ){
+        found.append('_id', this.FoundData._id);
+      }
+
     this.foundservice.updateFoundItem(found).subscribe(
       (response) => {
         this.FoundUpdated.emit('updated');
@@ -114,7 +118,7 @@ export class FoundForm implements OnInit {
   }
 }
 
-
+  
 fileChanged(event: any){
     let files = event.target.files;
     this.selectedFiles = files;

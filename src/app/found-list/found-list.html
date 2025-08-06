@@ -1,6 +1,43 @@
 <!-- Found Item Reports Container -->
 <div class="container py-3" style="background-color: #f0f4f8; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
 
+<div *ngIf="manualInvestigationMode && lostItem" class="container py-3 mb-3" style="background-color: #fff8e1; border-radius: 10px;">
+  <h5>🕵️ Investigating This Lost Item:</h5>
+  <table class="table table-bordered">
+    <thead class="table-warning text-center">
+      <tr>
+        <th>User</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Train</th>
+        <th>Coach/Seat</th>
+        <th>Item</th>
+        <th>Lost Date</th>
+        <th>Description</th>
+        <th>Proof</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr>
+        <td>{{ lostItem.fullnameofuser }}</td>
+        <td>{{ lostItem.mobile }}</td>
+        <td>{{ lostItem.email }}</td>
+        <td>{{ lostItem.trainNumber }} – {{ lostItem.trainName }}</td>
+        <td>{{ lostItem.coachnum || '-' }}/{{ lostItem.seatnum || '-' }}</td>
+        <td>{{ lostItem.itemname }}</td>
+        <td>{{ lostItem.dateoflost | date:'mediumDate' }}</td>
+        <td class="text-start small">{{ lostItem.description }}</td>
+        <td class="text-start small">{{ lostItem.proof }}</td>
+        <td><span class="badge bg-warning text-dark">In Progress</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
   <!-- Section Title -->
   <div class="mb-3">
     <h4 class="fw-semibold mb-1 text-dark" style="margin-bottom: 0;">
@@ -40,6 +77,8 @@
           <th>Date</th>
           <th>Description</th>
           <th>Actions</th>
+          <th>Status</th>
+          <th *ngIf="lostItem?.status === 'in-progress'">Action</th>
         </tr>
       </thead>
       <tbody *ngIf="!foundListLoader" class="text-center">
@@ -64,6 +103,18 @@
               </button>
             </div>
           </td>
+           <td>
+            <span class="badge bg-success" *ngIf="found.status === 'found'">Found</span>
+            <span class="badge bg-danger" *ngIf="found.status === 'not-found'">Not Found</span>
+            <span class="badge bg-warning text-dark" *ngIf="found.status === 'in-progress'">In Progress</span>
+          </td>
+          <td *ngIf="lostItem?.status === 'in-progress' && found.status !== 'found'">
+            <button class="btn btn-outline-primary btn-sm"
+                    (click)="mapToConfirmation(found)">
+              Map
+            </button>
+          </td>
+
         </tr>
       </tbody>
 
