@@ -2,6 +2,36 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
 
+**TrainMate** is India's first dedicated **Lost & Found** reporting platform for **Indian Railway passengers**, built using **Angular, Node.js, Express, and MongoDB**.
+
+---
+
+## 📌 Overview
+
+Every day, countless passengers lose personal belongings while traveling by train in India.  
+**TrainMate** bridges the gap between **owners** and **finders** by providing a verified platform for reporting lost or found items.
+
+---
+
+## ✨ Features
+
+- 🛡 **Verified Reports** – Admin review for authenticity.
+- 🔔 **Instant Match Notifications** – Get alerts when your item is found.
+- 🔒 **Secure Data Handling** – Information is shared only after verification.
+- 📂 **Lost & Found Forms** – User-friendly reporting forms.
+- 🖥 **Admin Panel** – Manage and approve reports.
+- 👤 **User Dashboard** – Track your lost and found cases.
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend:** Angular  
+**Backend:** Node.js, Express.js  
+**Database:** MongoDB  
+**Other Tools & Libraries:** JWT Authentication, RESTful APIs, Bootstrap / Tailwind CSS (if used)
+
+
 ## Development server
 
 To start a local development server, run:
